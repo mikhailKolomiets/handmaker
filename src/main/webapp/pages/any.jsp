@@ -9,7 +9,8 @@
 <BODY>
 
 <%
-		out.print("Server time: " + LocalTime.now());
+	Date date = new Date();
+		out.print("Server time: " + date);
 		%>
 
 
