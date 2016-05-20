@@ -10,6 +10,7 @@
 <%
 	Date date = new Date();
 		out.print("Server time: " + date);
+	System.out.println("maybe?");
 		%>
 
 
