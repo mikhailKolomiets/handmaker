@@ -8,7 +8,7 @@
 <BODY>
 
 <%
-		System.out.printf("Any string");
+		out.print("Any string");
 		%>
 
 
