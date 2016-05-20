@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="html/text; charset=UTF-8"%>
 
-
-its may be jsp page
+<!doctype html>
+<html>
+<% out.print("Any!")%>
+maybe
+</html>
