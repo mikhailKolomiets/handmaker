@@ -44,6 +44,7 @@
 	Query query = new Query();
 	try {
 		out.print("from query: " + query.select("boo", "test"));
+		query.addStringColumn("super", 15, "test");
 	}catch (Exception e){
 		out.print("Is bad... " + e.toString());
 	}

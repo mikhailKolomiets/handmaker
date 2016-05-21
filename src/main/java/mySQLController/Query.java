@@ -14,7 +14,7 @@ public class Query {
     private Statement statement;
     private ResultSet resultSet;
 
-    public int select(String var, String table) throws Exception{
+    public int select(String var, String table) throws Exception {
         connection = connectDB();
         statement = connection.createStatement();
         String sql = "SELECT " + var + " FROM " + table;
@@ -26,9 +26,19 @@ public class Query {
 
     }
 
-    private void close() throws Exception{
-        if (connection!=null)
+    public void addStringColumn(String var,int size, String table) throws Exception {
+        connection = connectDB();
+        statement = connection.createStatement();
+        String sql = "ALTER TABLE " + table + " ADD " + var + " VARCHAR(" + size + ") NOT NULL";
+        statement.executeUpdate(sql);
+        close();
+    }
+
+    private void close() throws Exception {
+        if (connection != null) {
             connection.close();
+            statement.close();
+        }
     }
 
     private Connection connectDB() throws Exception {
