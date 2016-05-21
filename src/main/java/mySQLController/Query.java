@@ -20,8 +20,9 @@ public class Query {
         String sql = "SELECT " + var + " FROM " + table;
         resultSet = statement.executeQuery(sql);
         resultSet.next();
+        int value = resultSet.getInt(1);
         close();
-        return resultSet.getInt(1);
+        return value;
 
     }
 
