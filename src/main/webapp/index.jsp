@@ -17,7 +17,7 @@
      style="position:absolute;left:9%;top:4%;width:9%;">
     <strong>Рус</strong></div>
 <div ng-click="sitePart = 'contacts'" class="textSite" style="position:absolute;left:19%;top:4%;width:9%;">
-    Контакты</div>
+    <strong>Язык</strong></div>
 <div ng-click="sitePart = 'main'" class="textSite" style="position:absolute;left:29%;top:4%;width:9%;">
     <strong>Главная</strong></div>
 <div ng-click="sitePart = 'enter'" class="textSite" style="position:absolute;left:39%;top:4%;width:9%;">
@@ -30,7 +30,7 @@
     <jsp:include page="pages/main.jsp"></jsp:include>
 </div>
 <div ng-show="sitePart == 'enter'" class="contentPage">
-    <jsp:include page="pages/any.jsp"></jsp:include>
+    <jsp:include page="pages/welcome.jsp"></jsp:include>
 </div>
 
 <div class="textSite" style="position:absolute;left:3%;top: 98%;width:94%;font-size: 11px; padding:0;">
