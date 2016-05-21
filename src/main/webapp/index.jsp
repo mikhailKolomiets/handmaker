@@ -20,17 +20,17 @@
     <strong>Контакты</strong></div>
 <div ng-click="sitePart = 'main'" class="textSite" style="position:absolute;left:29%;top:4%;width:9%;">
     <strong>Главная</strong></div>
-<div ng-click="sitePart = 'entrance'" class="textSite" style="position:absolute;left:39%;top:4%;width:9%;">
+<div ng-click="sitePart = 'enter'" class="textSite" style="position:absolute;left:39%;top:4%;width:9%;">
     <strong>Вход</strong></div>
 
 <div ng-show="sitePart == 'contacts.jsp'" class="contentPage">
-    <jsp:include page="contacts.jsp"></jsp:include>
+    <jsp:include page=""></jsp:include>
 </div>
 <div ng-show="sitePart == 'main'" class="logotypeImage">
-    <jsp:include page="main.jsp"></jsp:include>
+    <jsp:include page="snoop.jsp"></jsp:include>
 </div>
-<div ng-show="sitePart == 'entrance'" class="contentPage">
-    <jsp:include page="entrance.jsp"></jsp:include>
+<div ng-show="sitePart == 'enter'" class="contentPage">
+    <jsp:include page="pages/any.jsp"></jsp:include>
 </div>
 
 <div class="textSite" style="position:absolute;left:3%;top: 98%;width:94%;font-size: 11px; padding:0;">
