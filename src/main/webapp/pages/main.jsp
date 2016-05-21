@@ -1,3 +1,4 @@
+<%@ page import="mySQLController.Query" %>
 <%--
   Created by IntelliJ IDEA.
   User: mihail
@@ -11,6 +12,9 @@
     <title></title>
 </head>
 <body>
-Welcome!!!
+<p>Добро пожаловать на сайт РУКОДЕЛ.</p>
+Сайт посвещен hand maid работам.<br>
+На данном этапе находится в разработке: <br>
+VE-6 logining
 </body>
 </html>
