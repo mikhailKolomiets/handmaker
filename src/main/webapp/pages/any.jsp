@@ -26,7 +26,7 @@
 		Connection connection = dataSource.getConnection();
 		out.print("Connect doing");
 	}catch (Exception e) {
-		out.print("Sorry d't connect: " + e.getCause());
+		out.print("Sorry d't connect: " + e.toString());
 	}
 		%>
 
