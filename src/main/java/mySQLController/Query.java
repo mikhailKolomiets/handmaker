@@ -14,6 +14,13 @@ public class Query {
     private Statement statement;
     private ResultSet resultSet;
 
+    /**
+     * Take static var type int from base in table
+     * @param var
+     * @param table
+     * @return
+     * @throws Exception
+     */
     public int select(String var, String table) throws Exception {
         connection = connectDB();
         statement = connection.createStatement();
