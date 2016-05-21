@@ -15,7 +15,7 @@
 
 <%
 	Date date = new Date();
-		out.print("Server time: " + date);
+		out.print("Server time: " + date + "</br>");
 	//System.out.println("maybe?"); don't work in server
 
 	try {
@@ -26,7 +26,7 @@
 		Connection connection = dataSource.getConnection();
 		out.print("Connect doing");
 	}catch (Exception e) {
-		out.print("Sorry d't connect");
+		out.print("Sorry d't connect: " + e.getCause());
 	}
 		%>
 
