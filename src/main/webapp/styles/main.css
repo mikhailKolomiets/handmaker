@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FFFFE0;
+    color: #000000;
+}
+
+a {
+    color: #0000FF;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #800080;
+}
+
+a:active {
+    color: #FF0000;
+}
+
+a:hover {
+    color: #0000FF;
+    text-decoration: underline;
+}
+
+.logotypeImage {
+    position: absolute;
+    left: 30%;
+    top: 10%;
+    width: 40%;
+    height: 20%;
+}
+
+.textSite {
+    background-color: transparent;
+    padding: 0;
+    text-align: center;
+    color: #3CB371;
+    font-family: 'Century Gothic';
+    font-size: 16px;
+}
+
+.contentPage{
+    background-color: transparent;
+    padding: 0;
+    text-align: center;
+    color: #3CB371;
+    font-family: 'Century Gothic';
+    font-size: 14px;
+    position:absolute;
+    left:9%;
+    top:14%;
+    width:82%;
+}
+
+.footerLine {
+    color: #3CB371;
+    background-color: #3CB371;
+    position:absolute;
+    left:3%;
+    top:98%;
+    width:94%;
+    height:1px;
+    margin:0;
+    padding:0;
+    border-width: 0px;
+}
