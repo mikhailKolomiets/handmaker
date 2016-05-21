@@ -24,7 +24,7 @@
 		InitialContext initialContext = new InitialContext();
 		DataSource dataSource = (DataSource) initialContext.lookup("java:comp/env/jdbc/dbconnect");
 		Connection connection = dataSource.getConnection();
-		out.print("Connect doing");
+		out.print("Connect success");
 	}catch (Exception e) {
 		out.print("Sorry d't connect: " + e.toString());
 	}
