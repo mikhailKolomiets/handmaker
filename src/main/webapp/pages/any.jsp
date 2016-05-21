@@ -45,7 +45,7 @@
 	try {
 		out.print("from query: " + query.select("boo", "test"));
 	}catch (Exception e){
-		out.print("Is bad...");
+		out.print("Is bad... " + e.toString());
 	}
 
 		%>
