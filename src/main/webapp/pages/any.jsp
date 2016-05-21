@@ -31,7 +31,8 @@
 		out.print("Connect success <br>");
 		baseDo = connection.createStatement();
 		resultSet = baseDo.executeQuery("SELECT boo FROM test");
-		out.print(resultSet.getInt(1));
+		baseDo.executeQuery("CREATE TABLE depic (cool VARCHAR (12))");
+		//out.print(resultSet.getInt(1));
 	}catch (Exception e) {
 		out.print("Sorry d't connect: " + e.toString());
 	}
