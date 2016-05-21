@@ -17,7 +17,7 @@
      style="position:absolute;left:9%;top:4%;width:9%;">
     <strong>Рус</strong></div>
 <div ng-click="sitePart = 'contacts'" class="textSite" style="position:absolute;left:19%;top:4%;width:9%;">
-    <strong>Контакты</strong></div>
+    Контакты</div>
 <div ng-click="sitePart = 'main'" class="textSite" style="position:absolute;left:29%;top:4%;width:9%;">
     <strong>Главная</strong></div>
 <div ng-click="sitePart = 'enter'" class="textSite" style="position:absolute;left:39%;top:4%;width:9%;">
