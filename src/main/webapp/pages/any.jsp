@@ -10,12 +10,14 @@
 	<%@ page import="java.sql.Connection" %>
 	<%@ page import="java.sql.Statement" %>
 	<%@ page import="java.sql.ResultSet" %>
+	<%@ page import="mySQLController.Query" %>
 
 
 </HEAD>
 <BODY>
 
 <%
+	/**
 	Date date = new Date();
 		out.print("Server time: " + date + "</br>");
 	//System.out.println("maybe?"); don't work in server
@@ -38,6 +40,14 @@
 	}catch (Exception e) {
 		out.print("Sorry d't connect: " + e.toString());
 	}
+	*/
+	Query query = new Query();
+	try {
+		out.print("from query: " + query.select("boo", "test"));
+	}catch (Exception e){
+		out.print("Is bad...");
+	}
+
 		%>
 
 
