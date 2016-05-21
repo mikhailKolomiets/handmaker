@@ -1,16 +1,33 @@
 <HTML>
 <HEAD>
-	<TITLE>JBossEAP6.0 JSP snoop page</TITLE>
+	<TITLE>Connect</TITLE>
 	<%@ page import="javax.servlet.http.HttpUtils,java.util.Enumeration" %>
 	<%@ page import="java.lang.management.*" %>
-	<%@ page import="java.util.*, com.mysql.jdbc.*" %>
+	<%@ page import="java.util.*" %>
+	<%@ page import="java.sql.DriverManager" %>
+	<%@ page import="javax.naming.InitialContext" %>
+	<%@ page import="javax.sql.DataSource" %>
+	<%@ page import="java.sql.Connection" %>
+
+
 </HEAD>
 <BODY>
 
 <%
 	Date date = new Date();
 		out.print("Server time: " + date);
-	System.out.println("maybe?");
+	//System.out.println("maybe?"); don't work in server
+
+	try {
+
+
+		InitialContext initialContext = new InitialContext();
+		DataSource dataSource = (DataSource) initialContext.lookup("java:comp/env/jdbc/dbconnect");
+		Connection connection = dataSource.getConnection();
+		out.print("Connect doing");
+	}catch (Exception e) {
+		out.print("Sorry d't connect");
+	}
 		%>
 
 
