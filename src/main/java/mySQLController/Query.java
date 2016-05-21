@@ -16,10 +16,13 @@ public class Query {
 
     public int select(String var, String table) throws Exception{
         connection = connectDB();
+        statement = connection.createStatement();
         String sql = "SELECT " + var + " FROM " + table;
         resultSet = statement.executeQuery(sql);
         resultSet.next();
+        close();
         return resultSet.getInt(1);
+
     }
 
     private void close() throws Exception{
