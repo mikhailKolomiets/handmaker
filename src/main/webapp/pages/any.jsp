@@ -41,9 +41,10 @@
 		out.print("Sorry d't connect: " + e.toString());
 	}
 	*/
+	String name = request.getParameter("name");
 	Query query = new Query();
 	try {
-		out.print("from query: " + query.select("boo", "test"));
+		out.print("from query: " + query.select("boo", "test") + "<br><br>" + name);
 		//query.addStringColumn("super", 15, "test");
 	}catch (Exception e){
 		out.print("Is bad... " + e.toString());
