@@ -11,7 +11,7 @@
     <title></title>
 </head>
 <body>
-<form action="any.jsp" method="post">
+<form action="pages/any.jsp" method="post">
   Логин: <input type="text" size="8" name="name"><br>
   Пароль: <input type="password" size="8" name="pass"><br>
   <input type="submit" value="Войти">
