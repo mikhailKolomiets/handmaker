@@ -23,7 +23,7 @@
 
 
 		InitialContext initialContext = new InitialContext();
-		DataSource dataSource = (DataSource) initialContext.lookup("java:comp/env/jdbc/dbconnect");
+		DataSource dataSource = (DataSource) initialContext.lookup("java:comp/env/jdbc/MySQLDS");
 		Connection connection = dataSource.getConnection();
 		out.print("Connect success");
 	}catch (Exception e) {
