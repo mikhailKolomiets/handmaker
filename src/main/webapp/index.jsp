@@ -30,7 +30,12 @@
     <jsp:include page="pages/main.jsp"></jsp:include>
 </div>
 <div ng-show="sitePart == 'enter'" class="contentPage">
+    <div ng-click="sitePart = 'reg'" class="textSite" style="position:absolute;left:49%;top:4%;width:9%;">
+        <strong>Регистрация</strong></div>
     <jsp:include page="pages/welcome.jsp"></jsp:include>
+</div>
+<div ng-show="sitePart == 'reg'" class="contentPage">
+    <jsp:include page="pages/mainRegistration.jsp"></jsp:include>
 </div>
 
 <div class="textSite" style="position:absolute;left:3%;top: 98%;width:94%;font-size: 11px; padding:0;">
