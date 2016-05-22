@@ -24,7 +24,7 @@
 
                 query.createRegistration(request.getParameter("name"), request.getParameter("pass"), request.getParameter("email"),
                         request.getParameter("town"));
-                message = "User create!";//TODO 2-step reg
+                message = "<p>На ваш email был отправлен код активации. Введите его пожалуйста в окне ниже.</p>";//TODO 2-step reg
             } else {
                 message = registrationValidate.message;
             }
@@ -36,16 +36,16 @@
 %>
 
 <form action="index.jsp" method="post">
-    Логин: <input type="text" size="8" name="name" required placeholder="Не может быть пустым."><br>
+    Логин: <input type="text" size="8" name="name" required=""><br>
     Пароль: <input type="password" size="8" name="pass"><br>
-    Повтор пароля: <input type="password" size="8" name="confPass" required placeholder="Не может быть пустым."><br>
+    Повтор пароля: <input type="password" size="8" name="confPass" value="2"><br>
     email: <input type="email" size="8" name="email"><br>
     Город: <input type="text" size="8" name="town"><br>
     <input type="submit" value="Зарегистрировать">
 </form>
 <p>Или введите код, который пришел на email:</p>
 <form action="index.jsp" method="post">
-    <input type="text" size="20" name="Code" required placeholder="А где собственно код?">
+    <input type="text" size="20" name="Code" required placeholder="">
     <input type="submit" value="Проверить код">
 </form>
 </body>
