@@ -43,7 +43,7 @@
 <form action="index.jsp" method="post">
     Логин: <input type="text" size="8" name="name" required=""><br>
     Пароль: <input type="password" size="8" name="pass"><br>
-    Повтор пароля: <input type="password" size="8" name="confPass" value="2"><br>
+    Повтор пароля: <input type="password" size="8" name="confPass" required=""><br>
     email: <input type="email" size="8" name="email"><br>
     Город: <input type="text" size="8" name="town"><br>
     <input type="submit" value="Зарегистрировать">

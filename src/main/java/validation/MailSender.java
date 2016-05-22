@@ -46,6 +46,7 @@ public class MailSender {
             msg.setText(body);
 
             Transport.send(msg);
+            messageOb = "Success send mail";
         } catch (MessagingException mex) {
             mex.printStackTrace(); // TODO from this exception
             messageOb = mex.toString();
