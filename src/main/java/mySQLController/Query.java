@@ -45,7 +45,7 @@ public class Query {
     public String createRegistration(String name, String password, String email, String town) throws Exception {
         connection = connectDB();
         statement = connection.createStatement();
-        String sql = "INSERT INTO registration VALUES (NULL, " + name + ", " + password + ", someCode, ff, " + town + ")";
+        String sql = "INSERT INTO registration (name) VALUES (fff4)";
         statement.executeUpdate(sql);
         close();
         return null;
