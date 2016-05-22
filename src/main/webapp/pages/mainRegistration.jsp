@@ -12,7 +12,7 @@
 </head>
 <body>
 <%
-    String message = request.getParameter("confPass");
+    String message = request.getParameter("confPass").isEmpty() ? "" : request.getParameter("confPass");
     if (message.equals(""))
         out.print("no confirmation<br>");
     else
