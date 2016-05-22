@@ -28,7 +28,8 @@
                         request.getParameter("town"));
 
                 mailSender.sendTo(request.getParameter("email"), "hi", "test mail");
-                message = "<p>На ваш email был отправлен код активации. Введите его пожалуйста в окне ниже.</p>";//TODO 2-step reg
+                message = "<p>На ваш email был отправлен код активации. Введите его пожалуйста в окне ниже.</p>"
+                        + mailSender.messageOb;//TODO 2-step reg
             } else {
                 message = registrationValidate.message;
             }
