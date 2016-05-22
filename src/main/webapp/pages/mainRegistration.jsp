@@ -12,12 +12,15 @@
 </head>
 <body>
 <%
-    String message = request.getParameter("confPass").isEmpty() ? "" : request.getParameter("confPass");
-    if (message.equals(""))
-        out.print("no confirmation<br>");
-    else
-        out.print(message);
-
+    try {
+        String message = request.getParameter("confPass").isEmpty() ? "" : request.getParameter("confPass");
+        if (message.equals(""))
+            out.print("no confirmation<br>");
+        else
+            out.print(message);
+    } catch (Exception e) {
+        out.print("false " + e.toString() + "<br>");
+    }
 %>
 
 <form action="" method="post">
