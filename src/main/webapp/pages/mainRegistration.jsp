@@ -1,5 +1,6 @@
 <%@ page import="mySQLController.Query" %>
 <%@ page import="validation.RegistrationValidate" %>
+<%@ page import="validation.MailSender" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -17,7 +18,7 @@
 <%
     RegistrationValidate registrationValidate = new RegistrationValidate();
     Query query = new Query();
-
+    MailSender mailSender = new MailSender();
     try {
         String message = "";
          if(!request.getParameter("confPass").isEmpty()){
@@ -29,7 +30,9 @@
 
                 message = "<p>На ваш email был отправлен код активации. Введите его пожалуйста в окне ниже.</p>";//TODO 2-step reg
             } else {
-                message = registrationValidate.message;
+                mailSender.sendTo("mihail.kolomiets@gmail.com", "44", "dsa");
+                message = registrationValidate.message + " " + mailSender.messageOb;
+
             }
         }
             out.print(message);
