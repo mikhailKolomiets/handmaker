@@ -15,8 +15,10 @@
 <body>
 <%
     String sitePart = "main";
-    if(!request.getParameter("confPass").isEmpty())
-        sitePart = "reg";
+    try {
+        if (!request.getParameter("confPass").isEmpty())
+            sitePart = "reg";
+    }catch (Exception e) {}
 %>
 <div ng-click="sitePart = 'language'" ng-init="sitePart = '<%=sitePart%>'" class="textSite"
      style="position:absolute;left:9%;top:4%;width:9%;">
