@@ -1,15 +1,10 @@
 package validation;
 
-import javax.mail.*;
-
 /**
  * Created by mihail on 22.05.16.
  */
 public class RegistrationValidate {
     public String message = "";
-
-    final private String senderAddres = "virtecole.team@gmail.com";
-    final private String passwordSA = "nlk15Fj3WS";
 
     public boolean registrationValidate(String name, String password, String confirmPassword, String town, String email) {
 

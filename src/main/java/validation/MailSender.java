@@ -20,6 +20,7 @@ public class MailSender {
     //Now this is Virtecole support email from gmail and password it.
     final private String senderAddres = "virtecole.team@gmail.com";
     final private String passwordSA = "nlk15Fj3WS";
+    public String messageOb = "";
 
 
     public void sendTo(String userEmail, String theme, String body) {
@@ -47,6 +48,7 @@ public class MailSender {
             Transport.send(msg);
         } catch (MessagingException mex) {
             mex.printStackTrace(); // TODO from this exception
+            messageOb = mex.toString();
         }
     }
 
