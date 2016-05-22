@@ -18,9 +18,10 @@
         String message = request.getParameter("confPass").isEmpty() ? "" : request.getParameter("confPass");
         if (message.equals(""))
             out.print("no confirmation<br>");
-        else{
+        else if(!request.getParameter("confPass").isEmpty()){
             query.createRegistration(request.getParameter("name"), request.getParameter("pass"), request.getParameter("email"),
                     request.getParameter("town"));
+
             message = "User create!";
         }
             out.print(message);
