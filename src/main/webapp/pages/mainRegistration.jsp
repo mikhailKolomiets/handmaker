@@ -12,5 +12,14 @@
 </head>
 <body>
 There is registration!!!
+
+<form action="pages/any.jsp" method="post">
+  Логин: <input type="text" size="8" name="name"><br>
+  Пароль: <input type="password" size="8" name="pass"><br>
+  Повтор пароля: <input type="password" size="8" name="confPass"><br>
+  email: <input type="email" size="8" name="email"><br>
+  Город: <input type="text" size="8" name="town"><br>
+  <input type="submit" value="Зарегистрировать">
+</form>
 </body>
 </html>

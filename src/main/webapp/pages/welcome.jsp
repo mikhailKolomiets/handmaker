@@ -16,6 +16,5 @@
   Пароль: <input type="password" size="8" name="pass"><br>
   <input type="submit" value="Войти">
 </form>
-<a href="pages/mainRegistration.jsp"> Регистрация </a>
 </body>
 </html>
