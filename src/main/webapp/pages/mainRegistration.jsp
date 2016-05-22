@@ -45,8 +45,8 @@
                 message = registrationValidate.message;
             }
         }
-        if(request.getParameter("codeAuth").length() > 1){
-            message = "" + query.findByCode(request.getParameter("codeAuth"));
+        if(!request.getParameter("codeAuth").isEmpty()){
+            message = "Code: " + request.getParameter("codeAuth") + " ID : "+ query.findByCode(request.getParameter("codeAuth"));
             //todo end registration
         }
 
