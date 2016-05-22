@@ -1,5 +1,6 @@
 <%@ page import="mySQLController.Query" %>
 <%@ page import="validation.RegistrationValidate" %>
+<%@ page import="validation.MailSender" %>
 <%--
   Created by IntelliJ IDEA.
   User: mihail
@@ -24,6 +25,8 @@
 
                 query.createRegistration(request.getParameter("name"), request.getParameter("pass"), request.getParameter("email"),
                         request.getParameter("town"));
+                MailSender mailSender = new MailSender();
+                mailSender.sendTo(request.getParameter("email"), "hi", "test mail");
                 message = "<p>На ваш email был отправлен код активации. Введите его пожалуйста в окне ниже.</p>";//TODO 2-step reg
             } else {
                 message = registrationValidate.message;
