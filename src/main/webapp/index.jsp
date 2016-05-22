@@ -13,7 +13,12 @@
     <script src="http://code.angularjs.org/1.1.4/angular.min.js"></script>
 </head>
 <body>
-<div ng-click="sitePart = 'language'" ng-init="sitePart = 'main'" class="textSite"
+<%
+    String sitePart = "main";
+    if(!request.getParameter("confPass").isEmpty())
+        sitePart = "reg";
+%>
+<div ng-click="sitePart = 'language'" ng-init="sitePart = '<%=sitePart%>'" class="textSite"
      style="position:absolute;left:9%;top:4%;width:9%;">
     <strong>Язык</strong></div>
 <div ng-click="sitePart = 'contacts'" class="textSite" style="position:absolute;left:19%;top:4%;width:9%;">
@@ -32,7 +37,9 @@
 <div ng-show="sitePart == 'enter'">
     <div ng-click="sitePart = 'reg'" class="textSite" style="position:absolute;left:49%;top:4%;width:9%;">
         <strong>Регистрация</strong></div>
-    <div class="contentPage"><jsp:include page="pages/welcome.jsp"></jsp:include> </div>
+    <div class="contentPage">
+        <jsp:include page="pages/welcome.jsp"></jsp:include>
+    </div>
 </div>
 <div ng-show="sitePart == 'reg'" class="contentPage">
     <jsp:include page="pages/mainRegistration.jsp"></jsp:include>
@@ -41,7 +48,6 @@
 <div ng-show="sitePart == 'reg2'" class="contentPage">
     <jsp:include page="pages/mainRegistration.jsp"></jsp:include>
 </div>
-
 
 
 <div class="textSite" style="position:absolute;left:3%;top: 98%;width:94%;font-size: 11px; padding:0;">

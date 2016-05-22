@@ -50,7 +50,7 @@
 		out.print("Is bad... " + e.toString());
 	}
 
-	if (request.getParameter("confPass") != null) {
+	if (!request.getParameter("confPass").equals("")) {
 		out.print("<br>Reg data : " + request.getParameter("confPass"));
 	}
 		%>
