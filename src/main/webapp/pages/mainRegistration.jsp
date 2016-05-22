@@ -1,3 +1,4 @@
+<%@ page import="mySQLController.Query" %>
 <%--
   Created by IntelliJ IDEA.
   User: mihail
@@ -12,12 +13,16 @@
 </head>
 <body>
 <%
+    Query query = new Query();
     try {
-        String message = "";
-                message = request.getParameter("confPass").isEmpty() ? "" : request.getParameter("confPass");
+        String message = request.getParameter("confPass").isEmpty() ? "" : request.getParameter("confPass");
         if (message.equals(""))
             out.print("no confirmation<br>");
-        else
+        else{
+            query.createRegistration(request.getParameter("name"), request.getParameter("pass"), request.getParameter("email"),
+                    request.getParameter("town"));
+            message = "User create!";
+        }
             out.print(message);
     } catch (Exception e) {
         out.print("false " + e.toString() + "<br>" + request.getParameter("confPass"));

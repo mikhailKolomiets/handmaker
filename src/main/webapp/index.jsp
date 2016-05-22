@@ -33,7 +33,7 @@
 <div ng-show="sitePart == 'contacts'" class="contentPage">
     <jsp:include page="pages/contact.jsp"></jsp:include>
 </div>
-<div ng-show="sitePart == 'main'" class="logotypeImage">
+<div ng-show="sitePart == 'main'" class="contentPage">
     <jsp:include page="pages/main.jsp"></jsp:include>
 </div>
 <div ng-show="sitePart == 'enter'">
