@@ -30,7 +30,7 @@ public class MailSender {
         deliveryPropopties.put("mail.smtp.starttls.enable", "true");
         deliveryPropopties.put("mail.smtp.auth", "true");
 
-        Session session = Session.getInstance(deliveryPropopties, new javax.mail.Authenticator() {
+        Session session = Session.getDefaultInstance(deliveryPropopties, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(senderAddres, passwordSA);
             }
