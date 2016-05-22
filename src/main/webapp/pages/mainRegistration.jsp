@@ -1,6 +1,6 @@
 <%@ page import="mySQLController.Query" %>
 <%@ page import="validation.RegistrationValidate" %>
-<%@ page import="validation.MailSender" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: mihail
@@ -17,7 +17,7 @@
 <%
     RegistrationValidate registrationValidate = new RegistrationValidate();
     Query query = new Query();
-    MailSender mailSender = new MailSender();
+
     try {
         String message = "";
          if(!request.getParameter("confPass").isEmpty()){
@@ -27,14 +27,12 @@
                 query.createRegistration(request.getParameter("name"), request.getParameter("pass"), request.getParameter("email"),
                         request.getParameter("town"));
 
-                mailSender.sendTo(request.getParameter("email"), "hi", "test mail");
-                message = "<p>На ваш email был отправлен код активации. Введите его пожалуйста в окне ниже.</p>"
-                        + mailSender.messageOb;//TODO 2-step reg
+                message = "<p>На ваш email был отправлен код активации. Введите его пожалуйста в окне ниже.</p>";//TODO 2-step reg
             } else {
                 message = registrationValidate.message;
             }
         }
-            out.print(message + "<br>" + mailSender.messageOb);
+            out.print(message);
     } catch (Exception e) {
         out.print("Зарегистрируйте нового пользователя: <br>");
     }
