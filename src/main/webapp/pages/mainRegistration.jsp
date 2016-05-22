@@ -17,10 +17,8 @@
     RegistrationValidate registrationValidate = new RegistrationValidate();
     Query query = new Query();
     try {
-        String message = request.getParameter("confPass").isEmpty() ? "" : request.getParameter("confPass");
-        if (message.equals(""))
-            out.print("no confirmation<br>");
-        else if(!request.getParameter("confPass").isEmpty()){
+        String message = "";
+         if(!request.getParameter("confPass").isEmpty()){
             if (registrationValidate.registrationValidate(request.getParameter("name"), request.getParameter("pass"),
                     request.getParameter("confPass"),request.getParameter("town"), request.getParameter("email"))) {
 
@@ -33,17 +31,22 @@
         }
             out.print(message);
     } catch (Exception e) {
-        out.print("false " + e.toString() + "<br>" + request.getParameter("confPass"));
+        out.print("Зарегистрируйте нового пользователя: <br>");
     }
 %>
 
 <form action="index.jsp" method="post">
-    Логин: <input type="text" size="8" name="name"><br>
+    Логин: <input type="text" size="8" name="name" required placeholder="Не может быть пустым."><br>
     Пароль: <input type="password" size="8" name="pass"><br>
-    Повтор пароля: <input type="password" size="8" name="confPass"><br>
+    Повтор пароля: <input type="password" size="8" name="confPass" required placeholder="Не может быть пустым."><br>
     email: <input type="email" size="8" name="email"><br>
     Город: <input type="text" size="8" name="town"><br>
     <input type="submit" value="Зарегистрировать">
+</form>
+<p>Или введите код, который пришел на email:</p>
+<form action="index.jsp" method="post">
+    <input type="text" size="20" name="Code" required placeholder="А где собственно код?">
+    <input type="submit" value="Проверить код">
 </form>
 </body>
 </html>
