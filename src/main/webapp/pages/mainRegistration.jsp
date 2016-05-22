@@ -24,7 +24,7 @@
     }
 %>
 
-<form action="" method="post">
+<form action="index.jsp" method="post">
     Логин: <input type="text" size="8" name="name"><br>
     Пароль: <input type="password" size="8" name="pass"><br>
     Повтор пароля: <input type="password" size="8" name="confPass"><br>
