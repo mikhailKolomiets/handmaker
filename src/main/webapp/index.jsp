@@ -16,7 +16,11 @@
 <%
     String sitePart = "main";
     try {
-        if (!request.getParameter("confPass").isEmpty() || !request.getParameter("codeAuth").isEmpty())
+        if (!request.getParameter("confPass").isEmpty())
+            sitePart = "reg";
+    }catch (Exception e) {}
+    try {
+        if (!request.getParameter("codeAuth").isEmpty())
             sitePart = "reg";
     }catch (Exception e) {}
 %>

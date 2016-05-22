@@ -36,7 +36,7 @@
                 if (mailSender.messageOb.equals("")) {
                     query.createRegistration(request.getParameter("name"), request.getParameter("pass"), request.getParameter("email"),
                             request.getParameter("town"), code);
-                    message = "<p>На ваш email был отправлен код активации. Введите его пожалуйста в окне ниже.</p>";//TODO 2-step reg
+                    message = "<p>На ваш email был отправлен код активации. Введите его пожалуйста в окне ниже.</p>";
                 } else {
                     message = mailSender.messageOb;
                 }
@@ -53,7 +53,7 @@
 
         out.print(message);
     } catch (Exception e) {
-        out.print("Зарегистрируйте нового пользователя: <br>");
+        out.print("Зарегистрируйте нового пользователя: <br>" + e.toString());//todo test mode
     }
 %>
 
