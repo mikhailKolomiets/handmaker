@@ -13,13 +13,14 @@
 <body>
 <%
     try {
-        String message = request.getParameter("confPass").isEmpty() ? "" : request.getParameter("confPass");
+        String message = "";
+                message = request.getParameter("confPass").isEmpty() ? "" : request.getParameter("confPass");
         if (message.equals(""))
             out.print("no confirmation<br>");
         else
             out.print(message);
     } catch (Exception e) {
-        out.print("false " + e.toString() + "<br>");
+        out.print("false " + e.toString() + "<br>" + request.getParameter("confPass"));
     }
 %>
 
