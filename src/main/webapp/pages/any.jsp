@@ -44,14 +44,14 @@
 	//String name = request.getParameter("name");//TODO make кирилица
 	Query query = new Query();
 	try {
-		out.print("from query: " + query.select("boo", "test") + "<br><br>" + name);
+		out.print("from query: " + query.select("boo", "test") + "<br><br>");
 		//query.addStringColumn("super", 15, "test");
 	}catch (Exception e){
 		out.print("Is bad... " + e.toString());
 	}
 
 	if (request.getParameter("confPass") != null) {
-		out.print("<br>Reg data");
+		out.print("<br>Reg data : " + request.getParameter("confPass"));
 	}
 		%>
 
