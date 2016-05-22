@@ -1,4 +1,5 @@
 <%@ page import="mySQLController.Query" %>
+<%@ page import="validation.RegistrationValidate" %>
 <%--
   Created by IntelliJ IDEA.
   User: mihail
@@ -13,16 +14,22 @@
 </head>
 <body>
 <%
+    RegistrationValidate registrationValidate = new RegistrationValidate();
     Query query = new Query();
     try {
         String message = request.getParameter("confPass").isEmpty() ? "" : request.getParameter("confPass");
         if (message.equals(""))
             out.print("no confirmation<br>");
         else if(!request.getParameter("confPass").isEmpty()){
-            query.createRegistration(request.getParameter("name"), request.getParameter("pass"), request.getParameter("email"),
-                    request.getParameter("town"));
+            if (registrationValidate.registrationValidate(request.getParameter("name"), request.getParameter("pass"),
+                    request.getParameter("confPass"),request.getParameter("town"), request.getParameter("email"))) {
 
-            message = "User create!";
+                query.createRegistration(request.getParameter("name"), request.getParameter("pass"), request.getParameter("email"),
+                        request.getParameter("town"));
+                message = "User create!";//TODO 2-step reg
+            } else {
+                message = registrationValidate.message;
+            }
         }
             out.print(message);
     } catch (Exception e) {
