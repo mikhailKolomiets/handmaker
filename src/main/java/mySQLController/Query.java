@@ -42,14 +42,26 @@ public class Query {
         close();
     }
 
-    public String createRegistration(String name, String password, String email, String town) throws Exception {
+    public String createRegistration(String name, String password, String email, String town, String code) throws Exception {
         connection = connectDB();
         statement = connection.createStatement();
-        String sql = "INSERT INTO registration VALUES (NULL , '" +name + "' ,'"+password+"' ,'supercode' ,'"+email+
-                "' , '"+ town + "')";
+        String sql = "INSERT INTO registration VALUES (NULL , '" + name + "' ,'" + password + "' ,'" + code + "' ,'" + email +
+                "' , '" + town + "')";
         statement.executeUpdate(sql);
         close();
         return null;
+    }
+
+    public int findByCode(String code) throws Exception {
+        int id = 0;
+        connection = connectDB();
+        statement = connection.createStatement();
+        String sql = "SELECT id FROM registration" +
+                " WHERE code = '" + code + "' ";
+        resultSet = statement.executeQuery(sql);
+        if (resultSet.next())
+            id = resultSet.getInt(1);
+        return id;
     }
 
     private void close() throws Exception {

@@ -21,23 +21,21 @@
     Query query = new Query();
     MailSender mailSender = new MailSender();
     try {
-        String message = "", code = "";
+        String message = "", code;
         if (!request.getParameter("confPass").isEmpty()) {
             if (registrationValidate.registrationValidate(request.getParameter("name"), request.getParameter("pass"),
                     request.getParameter("confPass"), request.getParameter("town"), request.getParameter("email"))) {
 
                 code = UUID.randomUUID().toString();
                 mailSender.sendTo(request.getParameter("email"), "Регистрационный код РУКОДЕЛА",
-                        "Здравствуйте.<br>" +
-                                "Ваш код для завершения регистрации: " + code + " <br><br>" +
-                                "Данные для входа на сайт: <br><br>" +
-                                "Логин: " + request.getParameter("name") + "<br>" +
-                                "Пароль: " + request.getParameter("pass") + ".<br><br>" +
-                                "С уважением, команда рукодела.");
+                        "Ваш код для завершения регистрации: " + code + " " +
+                                "Данные для входа на сайт: " +
+                                "Логин: " + request.getParameter("name")  +
+                                "Пароль: " + request.getParameter("pass") + ".");
 
                 if (mailSender.messageOb.equals("")) {
                     query.createRegistration(request.getParameter("name"), request.getParameter("pass"), request.getParameter("email"),
-                            request.getParameter("town"));
+                            request.getParameter("town"), code);
                     message = "<p>На ваш email был отправлен код активации. Введите его пожалуйста в окне ниже.</p>";//TODO 2-step reg
                 } else {
                     message = mailSender.messageOb;
@@ -45,9 +43,14 @@
             } else {
                 //mailSender.sendTo("mihail.kolomiets@gmail.com", "44", "dsa");
                 message = registrationValidate.message;
-
             }
         }
+        if(request.getParameter("codeAuth").length() > 1){
+            message = "" + query.findByCode(request.getParameter("codeAuth"));
+            //todo end registration
+        }
+
+
         out.print(message);
     } catch (Exception e) {
         out.print("Зарегистрируйте нового пользователя: <br>");
@@ -65,7 +68,7 @@
 <p>Или введите код, который пришел на email:</p>
 
 <form action="index.jsp" method="post">
-    <input type="text" size="20" name="Code" required placeholder="">
+    <input type="text" size="20" name="codeAuth" required placeholder="">
     <input type="submit" value="Проверить код">
 </form>
 </body>
