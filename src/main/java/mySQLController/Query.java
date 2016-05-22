@@ -16,6 +16,7 @@ public class Query {
 
     /**
      * Take static var type int from base in table
+     *
      * @param var
      * @param table
      * @return
@@ -33,12 +34,22 @@ public class Query {
 
     }
 
-    public void addStringColumn(String var,int size, String table) throws Exception {
+    public void addStringColumn(String var, int size, String table) throws Exception {
         connection = connectDB();
         statement = connection.createStatement();
         String sql = "ALTER TABLE " + table + " ADD " + var + " VARCHAR(" + size + ") NOT NULL";
         statement.executeUpdate(sql);
         close();
+    }
+
+    public String createRegistration(String name, String password, String email, String town) throws Exception {
+        connection = connectDB();
+        statement = connection.createStatement();
+        String sql = "INSERT INTO registration VALUES (NULL, " + name + ", " + password + ", someCode, " + email +
+                ", " + town + ")";
+        statement.executeUpdate(sql);
+        close();
+        return null;
     }
 
     private void close() throws Exception {

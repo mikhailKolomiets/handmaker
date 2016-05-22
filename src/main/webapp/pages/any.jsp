@@ -41,7 +41,7 @@
 		out.print("Sorry d't connect: " + e.toString());
 	}
 	*/
-	String name = request.getParameter("name");//TODO make кирилица
+	//String name = request.getParameter("name");//TODO make кирилица
 	Query query = new Query();
 	try {
 		out.print("from query: " + query.select("boo", "test") + "<br><br>" + name);
@@ -50,6 +50,9 @@
 		out.print("Is bad... " + e.toString());
 	}
 
+	if (request.getParameter("confPass") != null) {
+		out.print("<br>Reg data");
+	}
 		%>
 
 
