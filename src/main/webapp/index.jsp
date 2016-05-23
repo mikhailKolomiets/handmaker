@@ -20,7 +20,7 @@
     headerName.hasMoreElements();
 
     while (headerName.hasMoreElements()) {
-    switch (headerName.nextElement().toString()){
+    switch ((String)headerName.nextElement()){
         case "codeAuth" :
             sitePart = "reg";
             break;
