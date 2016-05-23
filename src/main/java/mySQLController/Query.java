@@ -52,15 +52,26 @@ public class Query {
         return null;
     }
 
-    public int findByCode(String code) throws Exception {
-        int id = 0;
+    /**
+     *
+     * @param user
+     * @param pass
+     * @return 0 if pass incorrect, -1 if user doesn't exist, >0 user id
+     */
+    public int login(String user, String pass) throws Exception{
+        int id = -1;
         connection = connectDB();
         statement = connection.createStatement();
-        String sql = "SELECT id FROM registration" +
-                " WHERE code = '" + code + "' ";
+        String sql = "SELECT * FROM user" +
+                " WHERE name = '" + user + "' ";
         resultSet = statement.executeQuery(sql);
-        if (resultSet.next())
-            id = resultSet.getInt(1);
+        if(resultSet.next()) {
+            if (resultSet.getString("pass").equals(pass))
+                id = resultSet.getInt("id");
+            else
+                id = 0;
+        }
+        close();
         return id;
     }
 
