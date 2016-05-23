@@ -1,4 +1,5 @@
 <%@ page import="java.util.Enumeration" %>
+<%@ page import="resources.EnumFinder" %>
 <%--
   Created by IntelliJ IDEA.
   User: Компик
@@ -16,15 +17,12 @@
 <body>
 <%
     String sitePart = "main";
-    Enumeration headerName = request.getParameterNames();
 
-    while (headerName.hasMoreElements()) {
-        String paramName = (String)headerName.nextElement();
-    if (paramName.equals("codeAuth") || paramName.equals("confPass")){
+    if (EnumFinder.find(request.getParameterNames(), "codeAuth") || EnumFinder.find(request.getParameterNames(), "confPass"))
         sitePart = "reg";
-    }
-}
 
+    if (EnumFinder.find(request.getParameterNames(), "login") || EnumFinder.find(request.getParameterNames(), "logpass"))
+        sitePart = "enter";
 %>
 <div ng-click="sitePart = 'language'" ng-init="sitePart = '<%=sitePart%>'" class="textSite"
      style="position:absolute;left:9%;top:4%;width:9%;">
