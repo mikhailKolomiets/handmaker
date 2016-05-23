@@ -19,8 +19,11 @@
     Query query = new Query();
     try {
       int logInt = query.login(request.getParameter("login"), request.getParameter("logpass"));
-      if (logInt > 0)
-        message = "Вход выполнен";//todo lodin this
+      if (logInt > 0){
+        message = "Вход выполнен";
+        session.setAttribute("idUser", logInt);
+      }
+
       else if(logInt < 0)
         message = "Пользователя " + request.getParameter("login") + " нет в базе. Проверьте свой еmail.";
       else {
