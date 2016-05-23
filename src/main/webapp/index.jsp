@@ -21,10 +21,8 @@
 
     while (headerName.hasMoreElements()) {
         String paramName = (String)headerName.nextElement();
-    switch (paramName){
-        case "codeAuth" :
-            sitePart = "reg";
-            break;
+    if (paramName.equals("codeAuth")){
+        sitePart = "reg";
     }
 }
 
