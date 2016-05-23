@@ -14,16 +14,18 @@
 </head>
 <body>
 <%
-  String message = "Nothing does";
+  String message = "";
   if (EnumFinder.find(request.getParameterNames(), "login")) {
     Query query = new Query();
     try {
       int logInt = query.login(request.getParameter("login"), request.getParameter("logpass"));
       if (logInt > 0)
-        message = "Вход выполнен";
-      else if(logInt > 0)
-        message = "user dosen't exist";
-      else message = "password incorrect";
+        message = "Вход выполнен";//todo lodin this
+      else if(logInt < 0)
+        message = "Пользователя " + request.getParameter("login") + " нет в базе. Проверьте свой еmail.";
+      else {
+        message = "Неправильный пароль для пользователя " + request.getParameter("login") + ".";
+      }//todo send pass to email
     }catch (Exception bde){message = bde.toString();}
   }
   out.print(message);

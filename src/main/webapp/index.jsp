@@ -16,6 +16,7 @@
 </head>
 <body>
 <%
+    out.print(session.getId());
     String sitePart = "main";
 
     if (EnumFinder.find(request.getParameterNames(), "codeAuth") || EnumFinder.find(request.getParameterNames(), "confPass"))
