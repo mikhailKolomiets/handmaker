@@ -68,7 +68,7 @@ public class Query {
 
         connection = connectDB();
         statement = connection.createStatement();
-        String sql = "SELECT id FROM registration" +
+        String sql = "SELECT id, name, pass, email, town FROM registration" +
                 " WHERE code = '" + code + "' ";
         resultSet = statement.executeQuery(sql);
         if (resultSet.next()) {
@@ -77,6 +77,7 @@ public class Query {
                     resultSet.getString("email") + "', '" + resultSet.getString("town") + "')";
 
             statement.executeUpdate(sql);
+            //String sql = "DELETE FROM Registration " + "WHERE id = 101";
             close();
             return true;
         }
