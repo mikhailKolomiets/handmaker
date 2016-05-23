@@ -38,11 +38,15 @@
                 "  <input type=\"submit\" value=\"Войти\">\n" +
                 "</form>");
     } else {
-        out.print(session.getAttribute("idUser"));
-        %><a href="/index.jsp">djjk</a> <%
+        //out.print(session.getAttribute("idUser"));
+        %><a href="/index.jsp">Вход в личный кабинет</a> <%//todo design
     }
 %>
 
+<form action="pages/" method="post">
+    <input type="file">
+    <input type="submit">
+</form>
 
 </body>
 </html>

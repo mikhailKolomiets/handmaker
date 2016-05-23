@@ -40,6 +40,9 @@
 <div ng-hide="<%=userId > 0%>" ng-click="sitePart = 'enter'" class="textSite"
      style="position:absolute;left:39%;top:4%;width:9%;">
     <strong>Вход</strong></div>
+<div ng-hide="<%=userId == 0%>" ng-click="sitePart = 'userRoom'" class="textSite"
+     style="position:absolute;left:39%;top:4%;width:9%;">
+    <strong>Личный кабинет</strong></div>
 
 <div ng-show="sitePart == 'contacts'" class="contentPage">
     <jsp:include page="pages/contact.jsp"></jsp:include>
