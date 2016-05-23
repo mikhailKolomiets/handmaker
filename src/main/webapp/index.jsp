@@ -35,7 +35,7 @@
     <strong>Контакты</strong></div>
 <div ng-click="sitePart = 'main'" class="textSite" style="position:absolute;left:29%;top:4%;width:9%;">
     <strong>Главная</strong></div>
-<div ng-click="sitePart = 'enter'" class="textSite" style="position:absolute;left:39%;top:4%;width:9%;">
+<div ng-hide="sitePart == 'enter'" ng-click="sitePart = 'enter'" class="textSite" style="position:absolute;left:39%;top:4%;width:9%;">
     <strong>Вход</strong></div>
 
 <div ng-show="sitePart == 'contacts'" class="contentPage">

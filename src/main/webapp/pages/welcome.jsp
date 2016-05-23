@@ -14,28 +14,32 @@
 </head>
 <body>
 <%
-  String message = "";
-  if (EnumFinder.find(request.getParameterNames(), "login")) {
-    Query query = new Query();
-    try {
-      int logInt = query.login(request.getParameter("login"), request.getParameter("logpass"));
-      if (logInt > 0){
-        message = "Вход выполнен";
-        session.setAttribute("idUser", logInt);
-      }
+    String message = "";
+    if (EnumFinder.find(request.getParameterNames(), "login")) {
+        Query query = new Query();
+        try {
+            int logInt = query.login(request.getParameter("login"), request.getParameter("logpass"));
+            if (logInt > 0) {
+                message = "Вход выполнен";
+                session.setAttribute("idUser", logInt);
+            } else if (logInt < 0)
+                message = "Пользователя " + request.getParameter("login") + " нет в базе. Проверьте свой еmail.";
+            else {
+                message = "Неправильный пароль для пользователя " + request.getParameter("login") + ".";
+            }//todo send pass to email
+        } catch (Exception bde) {
+            message = bde.toString();
+        }
+    }
+    if ((int) session.getAttribute("idUser") <= 0) {
+        out.print(message + "<form action=\"index.jsp\" method=\"post\">\n" +
+                "  Логин: <input type=\"text\" size=\"8\" name=\"login\" required=\"\"><br>\n" +
+                "  Пароль: <input type=\"password\" size=\"8\" name=\"logpass\" required=\"\"><br>\n" +
+                "  <input type=\"submit\" value=\"Войти\">\n" +
+                "</form>");
+    } else {
 
-      else if(logInt < 0)
-        message = "Пользователя " + request.getParameter("login") + " нет в базе. Проверьте свой еmail.";
-      else {
-        message = "Неправильный пароль для пользователя " + request.getParameter("login") + ".";
-      }//todo send pass to email
-    }catch (Exception bde){message = bde.toString();}
-  }
-  out.print(message + "<form action=\"index.jsp\" method=\"post\">\n" +
-          "  Логин: <input type=\"text\" size=\"8\" name=\"login\" required=\"\"><br>\n" +
-          "  Пароль: <input type=\"password\" size=\"8\" name=\"logpass\" required=\"\"><br>\n" +
-          "  <input type=\"submit\" value=\"Войти\">\n" +
-          "</form>");
+    }
 %>
 
 </body>
