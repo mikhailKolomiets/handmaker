@@ -76,7 +76,7 @@ public class Query {
             sql = "INSERT INTO user VALUES (NULL ,'" + resultSet.getString("name") + "' ,'" + resultSet.getString("pass") + "' ,'" +
                     resultSet.getString("email") + "', '" + resultSet.getString("town") + "')";
             statement.executeUpdate(sql);
-            sql = "DELETE FROM Registration " + "WHERE id = " + id;
+            sql = "DELETE FROM registration " + "WHERE id = " + id;
             statement.executeUpdate(sql);
             close();
             return true;
