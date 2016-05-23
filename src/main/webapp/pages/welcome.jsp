@@ -31,12 +31,12 @@
       }//todo send pass to email
     }catch (Exception bde){message = bde.toString();}
   }
-  out.print(message);
+  out.print(message + "<form action=\"index.jsp\" method=\"post\">\n" +
+          "  Логин: <input type=\"text\" size=\"8\" name=\"login\" required=\"\"><br>\n" +
+          "  Пароль: <input type=\"password\" size=\"8\" name=\"logpass\" required=\"\"><br>\n" +
+          "  <input type=\"submit\" value=\"Войти\">\n" +
+          "</form>");
 %>
-<form action="index.jsp" method="post">
-  Логин: <input type="text" size="8" name="login" required=""><br>
-  Пароль: <input type="password" size="8" name="logpass" required=""><br>
-  <input type="submit" value="Войти">
-</form>
+
 </body>
 </html>
