@@ -39,7 +39,7 @@
                 "</form>");
     } else {
         out.print(session.getAttribute("idUser"));
-        %><jsp:forward page=""></jsp:forward><%
+        %><a href="/index.jsp">djjk</a> <%
     }
 %>
 
