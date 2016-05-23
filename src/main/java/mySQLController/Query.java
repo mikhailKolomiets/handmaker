@@ -72,12 +72,11 @@ public class Query {
                 " WHERE code = '" + code + "' ";
         resultSet = statement.executeQuery(sql);
         if (resultSet.next()) {
-
+            int id = resultSet.getInt("id");
             sql = "INSERT INTO user VALUES (NULL ,'" + resultSet.getString("name") + "' ,'" + resultSet.getString("pass") + "' ,'" +
                     resultSet.getString("email") + "', '" + resultSet.getString("town") + "')";
-
             statement.executeUpdate(sql);
-            sql = "DELETE FROM Registration " + "WHERE id = " + resultSet.getInt("id");
+            sql = "DELETE FROM Registration " + "WHERE id = " + id;
             statement.executeUpdate(sql);
             close();
             return true;
