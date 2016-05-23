@@ -16,17 +16,19 @@
 </head>
 <body>
 <%
-    String id = "  user id = ";
+    //String id = "  user id = ";
+    int userId = 0;
     if (EnumFinder.find(session.getAttributeNames(), "idUser"))
-        id += session.getAttribute("idUser");
-    out.print(session.getId() + " " + id);
+        userId = Integer.valueOf(session.getAttribute("idUser").toString());
+    //out.print(session.getId() + " " + id);
     String sitePart = "main";
 
     if (EnumFinder.find(request.getParameterNames(), "codeAuth") || EnumFinder.find(request.getParameterNames(), "confPass"))
         sitePart = "reg";
 
     if (EnumFinder.find(request.getParameterNames(), "login") || EnumFinder.find(request.getParameterNames(), "logpass"))
-        sitePart = "enter";
+        if (userId == 0)
+            sitePart = "enter";
 %>
 <div ng-click="sitePart = 'language'" ng-init="sitePart = '<%=sitePart%>'" class="textSite"
      style="position:absolute;left:9%;top:4%;width:9%;">
@@ -35,7 +37,8 @@
     <strong>Контакты</strong></div>
 <div ng-click="sitePart = 'main'" class="textSite" style="position:absolute;left:29%;top:4%;width:9%;">
     <strong>Главная</strong></div>
-<div ng-hide="sitePart == 'enter'" ng-click="sitePart = 'enter'" class="textSite" style="position:absolute;left:39%;top:4%;width:9%;">
+<div ng-hide="<%=userId > 0%>" ng-click="sitePart = 'enter'" class="textSite"
+     style="position:absolute;left:39%;top:4%;width:9%;">
     <strong>Вход</strong></div>
 
 <div ng-show="sitePart == 'contacts'" class="contentPage">

@@ -39,8 +39,10 @@
                 "</form>");
     } else {
         out.print(session.getAttribute("idUser"));
+        %><jsp:forward page="index.jsp"></jsp:forward><%
     }
 %>
+
 
 </body>
 </html>
