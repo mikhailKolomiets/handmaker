@@ -73,8 +73,8 @@ public class Query {
         resultSet = statement.executeQuery(sql);
         if (resultSet.next()) {
 
-            sql = "INSERT INTO user VALUES (NULL ,'" + resultSet.getString(2) + "' ,'" + resultSet.getString(3) + "' ,'" +
-                    resultSet.getString(4) + "', '" + resultSet.getString(6) + "')";
+            sql = "INSERT INTO user VALUES (NULL ,'" + resultSet.getString("name") + "' ,'" + resultSet.getString("pass") + "' ,'" +
+                    resultSet.getString("email") + "', '" + resultSet.getString("town") + "')";
 
             statement.executeUpdate(sql);
             close();
