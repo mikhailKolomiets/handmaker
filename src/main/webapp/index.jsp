@@ -21,6 +21,7 @@
 
     while (headerName.hasMoreElements()) {
         String paramName = (String)headerName.nextElement();
+        out.print(paramName);
     if (paramName.equals("codeAuth")){
         sitePart = "reg";
     }
