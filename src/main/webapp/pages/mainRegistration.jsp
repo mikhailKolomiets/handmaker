@@ -2,6 +2,8 @@
 <%@ page import="validation.RegistrationValidate" %>
 <%@ page import="validation.MailSender" %>
 <%@ page import="java.util.UUID" %>
+<%@ page import="java.util.Enumeration" %>
+<%@ page import="resources.EnumFinder" %>
 
 <%--
   Created by IntelliJ IDEA.
@@ -20,6 +22,12 @@
     RegistrationValidate registrationValidate = new RegistrationValidate();
     Query query = new Query();
     MailSender mailSender = new MailSender();
+
+    if (EnumFinder.find(request.getParameterNames(), "codeAuth")){
+        out.print(request.getParameter("codeAuth"));
+    }
+
+
     try {
         String message = "", code;
         if (!request.getParameter("confPass").isEmpty()) {

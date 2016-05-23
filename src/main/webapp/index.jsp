@@ -17,21 +17,14 @@
 <%
     String sitePart = "main";
     Enumeration headerName = request.getParameterNames();
-    headerName.hasMoreElements();
 
     while (headerName.hasMoreElements()) {
         String paramName = (String)headerName.nextElement();
         out.print(paramName);
-    if (paramName.equals("codeAuth")){
+    if (paramName.equals("codeAuth") || paramName.equals("confPass")){
         sitePart = "reg";
     }
 }
-
-
-    try {
-        if (!request.getParameter("confPass").isEmpty())
-            sitePart = "reg";
-    }catch (Exception e) {}
 
 %>
 <div ng-click="sitePart = 'language'" ng-init="sitePart = '<%=sitePart%>'" class="textSite"
