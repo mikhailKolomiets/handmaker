@@ -64,6 +64,26 @@ public class Query {
         return id;
     }
 
+    public boolean createUser(String code) throws Exception {
+
+        connection = connectDB();
+        statement = connection.createStatement();
+        String sql = "SELECT id FROM registration" +
+                " WHERE code = '" + code + "' ";
+        resultSet = statement.executeQuery(sql);
+        if (resultSet.next()) {
+
+            sql = "INSERT INTO user VALUES (NULL ,'" + resultSet.getString(2) + "' ,'" + resultSet.getString(3) + "' ,'" +
+                    resultSet.getString(4) + "', '" + resultSet.getString(6) + "')";
+
+            statement.executeUpdate(sql);
+            close();
+            return true;
+        }
+        close();
+        return false;
+    }
+
     private void close() throws Exception {
         if (connection != null) {
             connection.close();

@@ -24,8 +24,7 @@
 
     try {
         String message = "", code;
-        if (EnumFinder.find(request.getParameterNames(),"confPass"))
-         {
+        if (EnumFinder.find(request.getParameterNames(), "confPass")) {
             if (registrationValidate.registrationValidate(request.getParameter("name"), request.getParameter("pass"),
                     request.getParameter("confPass"), request.getParameter("town"), request.getParameter("email"))) {
 
@@ -33,7 +32,7 @@
                 mailSender.sendTo(request.getParameter("email"), "Регистрационный код РУКОДЕЛА",
                         "Ваш код для завершения регистрации: " + code + " " +
                                 "Данные для входа на сайт: " +
-                                "Логин: " + request.getParameter("name")  +
+                                "Логин: " + request.getParameter("name") +
                                 "Пароль: " + request.getParameter("pass") + ".");
 
                 if (mailSender.messageOb.equals("")) {
@@ -48,15 +47,20 @@
                 message = registrationValidate.message;
             }
         }
-        if (EnumFinder.find(request.getParameterNames(),"codeAuth")){
-            message = "Code: " + request.getParameter("codeAuth") + " ID : "+ query.findByCode(request.getParameter("codeAuth"));
+        if (EnumFinder.find(request.getParameterNames(), "codeAuth")) {
+            // message = "Code: " + request.getParameter("codeAuth") + " ID : "+ query.findByCode(request.getParameter("codeAuth"));
             //todo end registration
+            if (query.createUser(request.getParameter("codeAuth")))
+            {message = "Регистрация прошла успешно!";}
+            else {
+                message = "Неверный код!";
+            }
         }
 
 
         out.print(message);
     } catch (Exception e) {
-        out.print("Зарегистрируйте нового пользователя: <br>" + e.toString());//todo test mode
+        out.print("Ошибка : <br>" + e.toString());//todo test mode
     }
 %>
 
