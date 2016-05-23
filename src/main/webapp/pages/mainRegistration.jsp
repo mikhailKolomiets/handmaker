@@ -2,7 +2,6 @@
 <%@ page import="validation.RegistrationValidate" %>
 <%@ page import="validation.MailSender" %>
 <%@ page import="java.util.UUID" %>
-<%@ page import="java.util.Enumeration" %>
 <%@ page import="resources.EnumFinder" %>
 
 <%--
@@ -23,14 +22,10 @@
     Query query = new Query();
     MailSender mailSender = new MailSender();
 
-    if (EnumFinder.find(request.getParameterNames(), "codeAuth")){
-        out.print(request.getParameter("codeAuth"));
-    }
-
-
     try {
         String message = "", code;
-        if (!request.getParameter("confPass").isEmpty()) {
+        if (EnumFinder.find(request.getParameterNames(),"confPass"))
+         {
             if (registrationValidate.registrationValidate(request.getParameter("name"), request.getParameter("pass"),
                     request.getParameter("confPass"), request.getParameter("town"), request.getParameter("email"))) {
 
@@ -53,7 +48,7 @@
                 message = registrationValidate.message;
             }
         }
-        if(!request.getParameter("codeAuth").isEmpty()){
+        if (EnumFinder.find(request.getParameterNames(),"codeAuth")){
             message = "Code: " + request.getParameter("codeAuth") + " ID : "+ query.findByCode(request.getParameter("codeAuth"));
             //todo end registration
         }
