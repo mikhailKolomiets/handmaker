@@ -1,3 +1,4 @@
+<%@ page import="java.util.Enumeration" %>
 <%--
   Created by IntelliJ IDEA.
   User: Компик
@@ -14,6 +15,8 @@
 </head>
 <body>
 <%
+    Enumeration headerName = request.getHeaderNames();
+    headerName.hasMoreElements();
     String sitePart = "main";
     try {
         if (!request.getParameter("confPass").isEmpty())
