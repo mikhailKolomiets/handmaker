@@ -16,7 +16,10 @@
 </head>
 <body>
 <%
-    out.print(session.getId());
+    String id = "  user id = ";
+    if (EnumFinder.find(session.getAttributeNames(), "idUser"))
+        id += session.getAttribute("idUser");
+    out.print(session.getId() + " " + id);
     String sitePart = "main";
 
     if (EnumFinder.find(request.getParameterNames(), "codeAuth") || EnumFinder.find(request.getParameterNames(), "confPass"))
