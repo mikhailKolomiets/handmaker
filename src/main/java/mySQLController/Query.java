@@ -77,7 +77,8 @@ public class Query {
                     resultSet.getString("email") + "', '" + resultSet.getString("town") + "')";
 
             statement.executeUpdate(sql);
-            //String sql = "DELETE FROM Registration " + "WHERE id = 101";
+            sql = "DELETE FROM Registration " + "WHERE id = " + resultSet.getInt("id");
+            statement.executeUpdate(sql);
             close();
             return true;
         }
