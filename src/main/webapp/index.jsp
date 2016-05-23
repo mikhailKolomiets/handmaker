@@ -16,7 +16,7 @@
 <body>
 <%
     String sitePart = "main";
-    Enumeration headerName = request.getHeaderNames();
+    Enumeration headerName = request.getParameterNames();
     headerName.hasMoreElements();
 
     while (headerName.hasMoreElements()) {
