@@ -66,7 +66,8 @@
                     message += " - " + item.getName() + " (" + item.getSize() + ")" + item.getContentType();
                     InputStream fileStream = item.getInputStream();
                     byte[] foto = item.get();
-                    query.saveFoto(foto);
+                    int i = query.saveFoto(foto);
+                    message += "<br> --- " + i;
                     //todo upload file
                 }
 
