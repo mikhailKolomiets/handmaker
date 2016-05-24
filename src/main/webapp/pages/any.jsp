@@ -70,8 +70,6 @@
 
             }
         }
-
-        message += factory.getRepository();
     } catch (Exception e) {
         message = "Is bad... <br>" + e.toString() + "<br>" +
         e.getLocalizedMessage();
