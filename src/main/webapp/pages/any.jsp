@@ -62,9 +62,8 @@
 			FileItem item = iter.next();
 
 
-				InputStream uploadedStream = item.getInputStream();
-
-				uploadedStream.close();
+				File upFile = new File(request.getParameter("upfile"));
+			item.write(upFile);
 
 		}
 
