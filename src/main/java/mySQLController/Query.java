@@ -4,6 +4,7 @@ import org.apache.commons.fileupload.FileItem;
 
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+import java.io.File;
 import java.sql.*;
 
 /**
@@ -76,8 +77,8 @@ public class Query {
         return id;
     }
 
-    public int saveFoto(byte[] foto) throws Exception{
-        int id;
+    public int saveFoto(File file) throws Exception{
+        /**int id;
         String sFoto = "";
         for (byte i : foto)
         sFoto += i;
@@ -86,7 +87,13 @@ public class Query {
         String sql = "INSERT INTO gallery VALUES (NULL, '" + sFoto + "')";
         id = statement.executeUpdate(sql);
         close();
-        return id;
+        return id;*/
+
+
+
+
+
+        return 9;
     }
 
     public byte[] getFoto(int id) throws Exception{
