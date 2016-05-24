@@ -13,12 +13,10 @@
     <%@ page import="mySQLController.Query" %>
     <%@ page import="org.apache.commons.fileupload.servlet.ServletFileUpload" %>
     <%@ page import="org.apache.commons.fileupload.disk.DiskFileItemFactory" %>
-    <%@ page import="java.io.File" %>
     <%@ page import="org.apache.commons.fileupload.FileItem" %>
-    <%@ page import="java.io.InputStream" %>
-    <%@ page import="java.io.ByteArrayInputStream" %>
     <%@ page import="java.awt.image.BufferedImage" %>
     <%@ page import="javax.imageio.ImageIO" %>
+    <%@ page import="java.io.*" %>
 
 </HEAD>
 <BODY>
@@ -72,7 +70,8 @@
                     //int i = query.saveFoto(foto);
                     //message += "<br> --- " + i;
                     //todo upload file
-                    InputStream inputStream = new ByteArrayInputStream(foto);
+
+                    InputStream inputStream = new ByteArrayInputStream(query.getFoto(4));
 
                     BufferedImage image = ImageIO.read(inputStream);
                     ImageIO.write(image, "gif", new File("images/foto.gif"));
