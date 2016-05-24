@@ -74,6 +74,16 @@ public class Query {
         return id;
     }
 
+    public int saveFoto(byte[] foto) throws Exception{
+        int id;
+        connection = connectDB();
+        statement = connection.createStatement();
+        String sql = "INSERT INTO gallery VALUES (NULL, " + foto + ")";
+        id = statement.executeUpdate(sql);
+        close();
+        return id;
+    }
+
     public boolean createUser(String code) throws Exception {
 
         connection = connectDB();

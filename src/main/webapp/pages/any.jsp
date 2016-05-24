@@ -65,6 +65,8 @@
                 } else {
                     message += " - " + item.getName() + " (" + item.getSize() + ")" + item.getContentType();
                     InputStream fileStream = item.getInputStream();
+                    byte[] foto = item.get();
+                    query.saveFoto(foto);
                     //todo upload file
                 }
 
