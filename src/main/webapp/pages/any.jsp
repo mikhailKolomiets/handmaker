@@ -75,7 +75,7 @@
                     item.write(new File(item.getName()));
                     message += "<br> Dir name: ";
                     Enumeration enumeration = config.getInitParameterNames();
-                    if (enumeration.hasMoreElements()){
+                    while (enumeration.hasMoreElements()){
                         message += "<br>" + enumeration.nextElement();
                     }
                 }
