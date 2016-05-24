@@ -66,13 +66,13 @@
                 if (item.isFormField()) {
                     message += " - " + item.toString();
                 } else {
-                    message += " - " + item.getName() + " (" + item.getSize() + ")" + item.getContentType();
+                    message += " - " + item.getName() + " (" + item.getSize() + ")" + item.getContentType() + "<br>";
                     //InputStream fileStream = item.getInputStream();
                     byte[] foto = item.get();
                     //int i = query.saveFoto(foto);
                     //message += "<br> --- " + i;
                     //todo upload file
-                    item.write(new File("base/" + item.getName()));
+                    item.write(new File("images/" + item.getName()));
                 }
 
 
