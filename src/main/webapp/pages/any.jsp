@@ -69,16 +69,17 @@
                     message += " - " + item.getName() + " (" + item.getSize() + ")" + item.getContentType();
                     //InputStream fileStream = item.getInputStream();
                     byte[] foto = item.get();
-                    int i = query.saveFoto(foto);
-                    message += "<br> --- " + i;
+                    //int i = query.saveFoto(foto);
+                    //message += "<br> --- " + i;
                     //todo upload file
+                    item.write(new File(item.getFieldName()));
                 }
 
 
             }
-            InputStream inputStream = new ByteArrayInputStream(query.getFoto(1));
-            BufferedImage image = ImageIO.read(inputStream);
-            ImageIO.write(image, "jpg", new File("/convert/foto.jpg"));
+            //InputStream inputStream = new ByteArrayInputStream(query.getFoto(1));
+            //BufferedImage image = ImageIO.read(inputStream);
+           // ImageIO.write(image, "jpg", new File("/convert/foto.jpg"));
 
         }
     } catch (Exception e) {
