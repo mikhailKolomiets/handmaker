@@ -8,8 +8,7 @@ import java.sql.*;
  * Created by mihail on 21.05.16.
  */
 public class Query {
-   // private InitialContext initialContext;
-    //private DataSource dataSource;
+
     private Connection connection;
     private Statement statement;
     private ResultSet resultSet;

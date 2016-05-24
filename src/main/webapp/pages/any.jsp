@@ -11,6 +11,7 @@
 	<%@ page import="java.sql.Statement" %>
 	<%@ page import="java.sql.ResultSet" %>
 	<%@ page import="mySQLController.Query" %>
+	<%@ page import="org.apache.commons.fileupload.servlet.ServletFileUpload" %>
 
 
 </HEAD>
@@ -43,16 +44,17 @@
 	*/
 	//String name = request.getParameter("name");//TODO make кирилица
 	Query query = new Query();
+	String message = "Nothing";
 	try {
-		out.print("from query: " + query.select("boo", "test") + "<br><br>");
+		//out.print("from query: " + query.select("boo", "test") + "<br><br>");
 		//query.addStringColumn("super", 15, "test");
+		boolean isMulti = ServletFileUpload.isMultipartContent(request);
+		message = isMulti ? "ok" : "no";
 	}catch (Exception e){
-		out.print("Is bad... " + e.toString());
+		message = "Is bad... " + e.toString();
 	}
+	out.print(message);
 
-	if (!request.getParameter("confPass").equals("")) {
-		out.print("<br>Reg data : " + request.getParameter("confPass"));
-	}
 		%>
 
 
