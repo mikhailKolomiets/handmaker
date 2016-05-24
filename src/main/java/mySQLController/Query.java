@@ -89,6 +89,21 @@ public class Query {
         return id;
     }
 
+    public byte[] getFoto(int id) throws Exception{
+        byte[] foto;
+        connection = connectDB();
+        statement = connection.createStatement();
+        String sql = "SELECT foto town FROM gallery" +
+                " WHERE id = '" + id + "' ";
+        resultSet = statement.executeQuery(sql);
+        if (resultSet.next()) {
+            foto = resultSet.getBytes("foto");
+            close();
+            return foto;
+        }
+        return null;
+    }
+
     public boolean createUser(String code) throws Exception {
 
         connection = connectDB();

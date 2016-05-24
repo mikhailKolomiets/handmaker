@@ -16,7 +16,9 @@
     <%@ page import="java.io.File" %>
     <%@ page import="org.apache.commons.fileupload.FileItem" %>
     <%@ page import="java.io.InputStream" %>
-
+    <%@ page import="java.io.ByteArrayInputStream" %>
+    <%@ page import="java.awt.image.BufferedImage" %>
+    <%@ page import="javax.imageio.ImageIO" %>
 
 </HEAD>
 <BODY>
@@ -49,6 +51,7 @@
     //String name = request.getParameter("name");//TODO make кирилица
     Query query = new Query();
     String message = "";
+    int fotoId = 1;
     try {
 
         boolean isMulti = ServletFileUpload.isMultipartContent(request);
@@ -64,14 +67,19 @@
                     message += " - " + item.toString();
                 } else {
                     message += " - " + item.getName() + " (" + item.getSize() + ")" + item.getContentType();
-                    InputStream fileStream = item.getInputStream();
+                    //InputStream fileStream = item.getInputStream();
                     byte[] foto = item.get();
                     int i = query.saveFoto(foto);
                     message += "<br> --- " + i;
                     //todo upload file
                 }
 
+
             }
+            InputStream inputStream = new ByteArrayInputStream(query.getFoto(1));
+            BufferedImage image = ImageIO.read(inputStream);
+            ImageIO.write(image, "jpg", new File("/convert/foto.jpg"));
+
         }
     } catch (Exception e) {
         message = "Is bad... <br>" + e.toString() + "<br>" +
