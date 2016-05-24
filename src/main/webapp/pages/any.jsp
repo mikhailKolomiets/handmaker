@@ -75,9 +75,10 @@
                     item.write(new File(item.getName()));
                     message += "<br> Dir name: <br>";
                     Enumeration enumeration = config.getInitParameterNames();
+                    String param;
                     while (enumeration.hasMoreElements()){
-                        message += enumeration.nextElement() +": ";
-                        message += config.getInitParameter(enumeration.nextElement().toString()) + "<br>";
+                        param = enumeration.nextElement().toString();
+                        message +=param + " : " + config.getInitParameter(param) + "<br>";
                     }
                 }
 
