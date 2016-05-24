@@ -93,7 +93,7 @@ public class Query {
         byte[] foto;
         connection = connectDB();
         statement = connection.createStatement();
-        String sql = "SELECT foto town FROM gallery" +
+        String sql = "SELECT foto FROM gallery" +
                 " WHERE id = '" + id + "' ";
         resultSet = statement.executeQuery(sql);
         if (resultSet.next()) {
