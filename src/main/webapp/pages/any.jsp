@@ -12,6 +12,7 @@
 	<%@ page import="java.sql.ResultSet" %>
 	<%@ page import="mySQLController.Query" %>
 	<%@ page import="org.apache.commons.fileupload.servlet.ServletFileUpload" %>
+	<%@ page import="org.apache.commons.fileupload.disk.DiskFileItemFactory" %>
 
 
 </HEAD>
@@ -50,6 +51,8 @@
 		//query.addStringColumn("super", 15, "test");
 		boolean isMulti = ServletFileUpload.isMultipartContent(request);
 		message = isMulti ? "ok" : "no";
+		DiskFileItemFactory factory = new DiskFileItemFactory();
+		message += factory.getRepository();
 	}catch (Exception e){
 		message = "Is bad... " + e.toString();
 	}
