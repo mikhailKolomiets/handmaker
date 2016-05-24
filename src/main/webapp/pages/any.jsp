@@ -73,10 +73,11 @@
                     //message += "<br> --- " + i;
                     //todo upload file
                     item.write(new File(item.getName()));
-                    message += "<br> Dir name: ";
+                    message += "<br> Dir name: <br>";
                     Enumeration enumeration = config.getInitParameterNames();
                     while (enumeration.hasMoreElements()){
-                        message += "<br>" + enumeration.nextElement();
+                        message += enumeration.nextElement() +": ";
+                        message += config.getInitParameter(enumeration.nextElement().toString()) + "<br>";
                     }
                 }
 
