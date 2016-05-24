@@ -1,5 +1,7 @@
 package mySQLController;
 
+import org.apache.commons.fileupload.FileItem;
+
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import java.sql.*;
@@ -76,9 +78,12 @@ public class Query {
 
     public int saveFoto(byte[] foto) throws Exception{
         int id;
+        String sFoto = "";
+        for (byte i : foto)
+        sFoto += i;
         connection = connectDB();
         statement = connection.createStatement();
-        String sql = "INSERT INTO gallery VALUES (NULL, '" + foto + "')";
+        String sql = "INSERT INTO gallery VALUES (NULL, '" + sFoto + "')";
         id = statement.executeUpdate(sql);
         close();
         return id;
