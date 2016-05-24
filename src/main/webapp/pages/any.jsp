@@ -72,14 +72,10 @@
                     //int i = query.saveFoto(foto);
                     //message += "<br> --- " + i;
                     //todo upload file
-                    item.write(new File(item.getName()));
-                    message += "<br> Dir name: <br>";
-                    Enumeration enumeration = config.getInitParameterNames();
-                    String param;
-                    while (enumeration.hasMoreElements()){
-                        param = enumeration.nextElement().toString();
-                        message +=param + " : " + config.getInitParameter(param) + "<br>";
-                    }
+                    InputStream inputStream = new ByteArrayInputStream(foto);
+
+                    BufferedImage image = ImageIO.read(inputStream);
+                    ImageIO.write(image, "gif", new File("images/foto.gif"));
                 }
 
 
