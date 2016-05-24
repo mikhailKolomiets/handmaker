@@ -78,7 +78,7 @@ public class Query {
         int id;
         connection = connectDB();
         statement = connection.createStatement();
-        String sql = "INSERT INTO gallery VALUES (NULL, " + foto + ")";
+        String sql = "INSERT INTO gallery VALUES (NULL, '" + foto.toString() + "')";
         id = statement.executeUpdate(sql);
         close();
         return id;
