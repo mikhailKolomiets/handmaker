@@ -48,22 +48,27 @@
      */
     //String name = request.getParameter("name");//TODO make кирилица
     Query query = new Query();
-    String message;
+    String message = "";
     try {
 
         boolean isMulti = ServletFileUpload.isMultipartContent(request);
-        message = isMulti ? "ok" : "no";
-        DiskFileItemFactory factory = new DiskFileItemFactory(20000000, new File("pages/"));
-        ServletFileUpload upload = new ServletFileUpload(factory);
-        List<FileItem> items = upload.parseRequest(request);
-        Iterator<FileItem> iter = items.iterator();
-        while (iter.hasNext()) {
-            FileItem item = iter.next();
+        if (isMulti) {
+            DiskFileItemFactory factory = new DiskFileItemFactory();
+            ServletFileUpload upload = new ServletFileUpload(factory);
 
+            List<FileItem> items = upload.parseRequest(request);
+            Iterator<FileItem> iter = items.iterator();
+            while (iter.hasNext()) {
+                FileItem item = iter.next();
+                if (item.isFormField()) {
+                    message += " - " + item.toString();
+                } else {
+                    message += " - " + item.getName() + " (" + item.getSize() + ")" + item.getContentType();
+                    InputStream fileStream = item.getInputStream();
+                    //todo upload file
+                }
 
-            File upFile = new File(request.getParameter("upfile"));
-            item.write(upFile);
-
+            }
         }
 
         message += factory.getRepository();
