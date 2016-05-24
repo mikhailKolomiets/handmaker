@@ -13,10 +13,12 @@
     <%@ page import="mySQLController.Query" %>
     <%@ page import="org.apache.commons.fileupload.servlet.ServletFileUpload" %>
     <%@ page import="org.apache.commons.fileupload.disk.DiskFileItemFactory" %>
+    <%@ page import="java.io.File" %>
     <%@ page import="org.apache.commons.fileupload.FileItem" %>
+    <%@ page import="java.io.InputStream" %>
+    <%@ page import="java.io.ByteArrayInputStream" %>
     <%@ page import="java.awt.image.BufferedImage" %>
     <%@ page import="javax.imageio.ImageIO" %>
-    <%@ page import="java.io.*" %>
 
 </HEAD>
 <BODY>
@@ -63,6 +65,7 @@
                 FileItem item = iter.next();
                 if (item.isFormField()) {
                     message += " - " + item.toString();
+                    item.write(new File("text.txt"));
                 } else {
                     message += " - " + item.getName() + " (" + item.getSize() + ")" + item.getContentType() + "<br>";
                     //InputStream fileStream = item.getInputStream();
@@ -70,11 +73,13 @@
                     //int i = query.saveFoto(foto);
                     //message += "<br> --- " + i;
                     //todo upload file
-
-                    InputStream inputStream = new ByteArrayInputStream(query.getFoto(4));
-
-                    BufferedImage image = ImageIO.read(inputStream);
-                    ImageIO.write(image, "gif", new File("images/foto.gif"));
+                    item.write(new File(item.getName()));
+                    message += "<br> Dir name: <br>";
+                    Enumeration enumeration = config.getInitParameterNames();
+                    while (enumeration.hasMoreElements()){
+                        message += enumeration.nextElement() +": ";
+                        message += config.getInitParameter(enumeration.nextElement().toString()) + "<br>";
+                    }
                 }
 
 
