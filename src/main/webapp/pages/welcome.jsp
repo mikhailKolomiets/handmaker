@@ -43,7 +43,7 @@
     }
 %>
 
-<form method="POST" enctype="multipart/form-data" action="fup.cgi">
+<form method="POST" enctype="multipart/form-data" action="pages/any.jsp">
 File to upload: <input type="file" name="upfile"><br/>
 Notes about the file: <input type="text" name="note"><br/>
 <br/>
