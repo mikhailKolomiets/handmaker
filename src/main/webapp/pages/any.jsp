@@ -68,7 +68,8 @@
 
         message += factory.getRepository();
     } catch (Exception e) {
-        message = "Is bad... \'<br>" + e.getStackTrace();
+        message = "Is bad... <br>" + e.getMessage() + "<br>";
+        e.printStackTrace();
     }
     out.print(message);
 
