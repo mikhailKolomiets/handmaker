@@ -80,7 +80,7 @@
 
                     //item.write(new File("text.txt"));
                 } else {
-                    message += " - " + item.getName() + " (" + item.getString("StoreLocation") + ")" + item.toString() + "<br>";
+                    message += " - " + item.getName() + " (" + item.getContentType() + ")" + item.toString() + "<br>";
 
                     Iterator itr = item.getHeaders().getHeaderNames();
                     while (itr.hasNext()){
