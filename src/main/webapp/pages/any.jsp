@@ -61,7 +61,7 @@
             DiskFileItemFactory factory = new DiskFileItemFactory();
             ServletFileUpload upload = new ServletFileUpload(factory);
             ServletContext servletContext = config.getServletContext();
-            String path = servletContext.getRealPath("/images");
+            String path = servletContext.getRealPath("/upload");
             message += " <br> path : " + path + "<br>";
 
             List<FileItem> items = upload.parseRequest(request);
@@ -70,8 +70,9 @@
                 FileItem item = iter.next();
                 if (item.isFormField()) {
                     item.setFieldName(item.getName());
-                    message += " - " + item.toString();
-                    item.write(new File("text.txt"));
+                    message += " - " + item.toString() + "<br>";
+
+                    //item.write(new File("text.txt"));
                 } else {
                     message += " - " + item.getName() + " (" + item.getSize() + ")" + item.getContentType() + "<br>";
                     //InputStream fileStream = item.getInputStream();
@@ -80,7 +81,7 @@
                     //int i = query.saveFoto(foto);
                     //message += "<br> --- " + i;
                     //todo upload file
-                    item.write(new File(item.getName()));
+                    //item.write(new File(item.getName()));
                     %>
 <img src="<%=item.getName()%>">
 <%
