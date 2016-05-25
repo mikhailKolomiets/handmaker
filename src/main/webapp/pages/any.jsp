@@ -53,6 +53,7 @@
     //String name = request.getParameter("name");//TODO make кирилица
     Query query = new Query();
     String message = "";
+    String imgSrc = "";
     int fotoId = 1;
     try {
 
@@ -75,11 +76,16 @@
                 FileItem item = iter.next();
                 if (item.isFormField()) {
                     item.setFieldName(item.getName());
-                    message += " - " + item.toString() + "<br>";
+                    message += " its text "  + "<br>";
 
                     //item.write(new File("text.txt"));
                 } else {
-                    message += " - " + item.getName() + " (" + item.getHeaders().getHeader("StoreLocation") + ")" + item.toString() + "<br>";
+                    message += " - " + item.getName() + " (" + item.getSize() + ")" + item.toString() + "<br>";
+
+                    Iterator itr = item.getHeaders().getHeaderNames();
+                    while (itr.hasNext()){
+                        message += itr.next() + " + ";
+                    }
                     //InputStream fileStream = item.getInputStream();
                     //byte[] foto = item.get();
 
