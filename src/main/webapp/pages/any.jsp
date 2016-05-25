@@ -75,12 +75,9 @@
                     //message += "<br> --- " + i;
                     //todo upload file
                     //item.write(new File(item.getName()));
-                    RandomAccessFile accessFile = new RandomAccessFile(item.getName(), "rw");
-                    accessFile.write(foto);
-                    %>
-<img src="../<%=item.getName()%>">
-<img src="images/logo.png" width="200" height="300">
-<%
+                    //RandomAccessFile accessFile = new RandomAccessFile(item.getName(), "rw");
+                    //accessFile.write(foto);
+
 
                     message += "<br> Dir name: <br>";
                     Enumeration enumeration = config.getInitParameterNames();
