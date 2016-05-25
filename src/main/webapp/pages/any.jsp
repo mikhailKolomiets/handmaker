@@ -19,6 +19,7 @@
     <%@ page import="java.io.ByteArrayInputStream" %>
     <%@ page import="java.awt.image.BufferedImage" %>
     <%@ page import="javax.imageio.ImageIO" %>
+    <%@ page import="java.io.RandomAccessFile" %>
 
 </HEAD>
 <BODY>
@@ -73,7 +74,10 @@
                     //int i = query.saveFoto(foto);
                     //message += "<br> --- " + i;
                     //todo upload file
-                    item.write(new File(item.getName()));
+                    //item.write(new File(item.getName()));
+                    RandomAccessFile accessFile = new RandomAccessFile(item.getName(), "rw");
+                    accessFile.write(foto);
+
                     message += "<br> Dir name: <br>";
                     Enumeration enumeration = config.getInitParameterNames();
                     while (enumeration.hasMoreElements()){
