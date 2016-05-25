@@ -79,7 +79,7 @@
                     accessFile.write(foto);
                     %>
 <img src="../<%=item.getName()%>">
-<img src="../images/logo.png">
+<img src="images/logo.png" width="200" height="300">
 <%
 
                     message += "<br> Dir name: <br>";
