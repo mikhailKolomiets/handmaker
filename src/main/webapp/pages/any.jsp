@@ -60,9 +60,10 @@
         if (isMulti) {
             DiskFileItemFactory factory = new DiskFileItemFactory();
             ServletFileUpload upload = new ServletFileUpload(factory);
-            ServletContext servletContext = config.getServletContext();
-            String path = servletContext.TEMPDIR;
-            message += " <br> path : " + path + "<br>";
+            //ServletContext servletContext = config.getServletContext();
+            //String path = servletContext.TEMPDIR;
+            //message += " <br> path : " + path + "<br>";
+            //factory.setRepository(new File("/upload"));
 
             List<FileItem> items = upload.parseRequest(request);
             Iterator<FileItem> iter = items.iterator();
@@ -81,7 +82,7 @@
                     //int i = query.saveFoto(foto);
                     //message += "<br> --- " + i;
                     //todo upload file
-                    //item.write(new File("upload/"+item.getName()));
+                    item.write(new File("/upload/"+item.getName()));
                     %>
 <img src="<%=item.getName()%>">
 <%
