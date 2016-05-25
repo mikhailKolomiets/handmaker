@@ -75,6 +75,9 @@
                     //message += "<br> --- " + i;
                     //todo upload file
                     item.write(new File(item.getName()));
+                    %>
+<img src="<%=item.getName()%>">
+<%
                     //RandomAccessFile accessFile = new RandomAccessFile(item.getName(), "rw");
                     //accessFile.write(foto);
 
@@ -102,6 +105,6 @@
 
 %>
 
-<img src="images/jbosscorp_logo.png">
+<img src="../images/jbosscorp_logo.png">
 </BODY>
 </HTML>
