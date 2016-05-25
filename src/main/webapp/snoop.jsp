@@ -9,8 +9,6 @@
 
 <H1>WebApp JSP Snoop page</H1>
 <img src="images/jbosscorp_logo.png">
-<img src="logo.gif">
-<img src="images/logo.png">
 
 <h2>JVM Memory Monitor</h2>
  
