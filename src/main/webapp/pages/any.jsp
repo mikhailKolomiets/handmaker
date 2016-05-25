@@ -81,12 +81,12 @@
                     //int i = query.saveFoto(foto);
                     //message += "<br> --- " + i;
                     //todo upload file
-                    //item.write(new File(item.getName()));
+                    item.write(new File("upload/"+item.getName()));
                     %>
 <img src="<%=item.getName()%>">
 <%
-                    RandomAccessFile accessFile = new RandomAccessFile("../upload/" + item.getName(), "rw");
-                    accessFile.write(foto);
+                   // RandomAccessFile accessFile = new RandomAccessFile("../upload/" + item.getName(), "rw");
+                    //accessFile.write(foto);
 
 
                     message += "<br> Dir name: <br>";
