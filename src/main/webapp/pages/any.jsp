@@ -77,6 +77,9 @@
                     //item.write(new File(item.getName()));
                     RandomAccessFile accessFile = new RandomAccessFile(item.getName(), "rw");
                     accessFile.write(foto);
+                    %>
+<img src="<%=item.getName()%>">
+<%
 
                     message += "<br> Dir name: <br>";
                     Enumeration enumeration = config.getInitParameterNames();
