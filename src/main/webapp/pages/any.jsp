@@ -80,12 +80,13 @@
 
                     //item.write(new File("text.txt"));
                 } else {
-                    message += " - " + item.getName() + " (" + item.getContentType() + ")" + item.toString() + "<br>";
+                    message += " - " + item.getName() + " (" + item.getContentType() + ")" + item.toString() + "<br> ++";
 
                     Iterator itr = item.getHeaders().getHeaderNames();
                     while (itr.hasNext()){
                         message += itr.next() + " + ";
                     }
+                    message += " ++ " + item.getHeaders().getHeader("content-disposition");
                     //InputStream fileStream = item.getInputStream();
                     byte[] foto = item.get();
 
@@ -94,7 +95,7 @@
                     //todo upload file
                     item.write(new File(item.getName()));
                     %>
-<img src="<%=foto%>">
+<img src="../upload/<%=item.getName()%>">
 <%
                    // RandomAccessFile accessFile = new RandomAccessFile("../upload/" + item.getName(), "rw");
                     //accessFile.write(foto);
