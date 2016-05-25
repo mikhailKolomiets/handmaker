@@ -20,6 +20,7 @@
     <%@ page import="java.awt.image.BufferedImage" %>
     <%@ page import="javax.imageio.ImageIO" %>
     <%@ page import="java.io.RandomAccessFile" %>
+    <%@ page import="javax.servlet.*" %>
 
 </HEAD>
 <BODY>
@@ -59,6 +60,9 @@
         if (isMulti) {
             DiskFileItemFactory factory = new DiskFileItemFactory();
             ServletFileUpload upload = new ServletFileUpload(factory);
+            ServletContext servletContext = config.getServletContext();
+            String path = servletContext.getRealPath("/");
+            message += " <br> path : " + path + "<br>";
 
             List<FileItem> items = upload.parseRequest(request);
             Iterator<FileItem> iter = items.iterator();
