@@ -59,8 +59,12 @@
         boolean isMulti = ServletFileUpload.isMultipartContent(request);
         if (isMulti) {
             DiskFileItemFactory factory = new DiskFileItemFactory();
+
+            ServletContext servletContext = config.getServletContext();
+            File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
+            factory.setRepository(repository);
+
             ServletFileUpload upload = new ServletFileUpload(factory);
-            //ServletContext servletContext = config.getServletContext();
             //String path = servletContext.TEMPDIR;
             //message += " <br> path : " + path + "<br>";
             //factory.setRepository(new File("/upload"));
@@ -77,12 +81,12 @@
                 } else {
                     message += " - " + item.getName() + " (" + item.getSize() + ")" + item.getContentType() + "<br>";
                     //InputStream fileStream = item.getInputStream();
-                    byte[] foto = item.get();
+                    //byte[] foto = item.get();
 
                     //int i = query.saveFoto(foto);
                     //message += "<br> --- " + i;
                     //todo upload file
-                    item.write(new File("/upload/"+item.getName()));
+                    item.write(new File("upload/"+item.getName()));
                     %>
 <img src="<%=item.getName()%>">
 <%
