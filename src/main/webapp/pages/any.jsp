@@ -85,7 +85,7 @@
                     %>
 <img src="<%=item.getName()%>">
 <%
-                    RandomAccessFile accessFile = new RandomAccessFile("upload/" + item.getName(), "rw");
+                    RandomAccessFile accessFile = new RandomAccessFile("../upload/" + item.getName(), "rw");
                     accessFile.write(foto);
 
 
