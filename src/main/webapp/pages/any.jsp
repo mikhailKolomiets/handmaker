@@ -79,7 +79,7 @@
 
                     //item.write(new File("text.txt"));
                 } else {
-                    message += " - " + item.getName() + " (" + item.getSize() + ")" + item.getContentType() + "<br>";
+                    message += " - " + item.getName() + " (" + item.getHeaders().getHeaderNames() + ")" + item.toString() + "<br>";
                     //InputStream fileStream = item.getInputStream();
                     //byte[] foto = item.get();
 
