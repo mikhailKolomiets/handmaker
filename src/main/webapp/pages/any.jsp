@@ -61,7 +61,7 @@
             DiskFileItemFactory factory = new DiskFileItemFactory();
             ServletFileUpload upload = new ServletFileUpload(factory);
             ServletContext servletContext = config.getServletContext();
-            String path = servletContext.getRealPath("/");
+            String path = servletContext.getRealPath("/images");
             message += " <br> path : " + path + "<br>";
 
             List<FileItem> items = upload.parseRequest(request);
