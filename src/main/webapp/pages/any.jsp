@@ -69,12 +69,14 @@
             while (iter.hasNext()) {
                 FileItem item = iter.next();
                 if (item.isFormField()) {
+                    item.setFieldName(item.getName());
                     message += " - " + item.toString();
                     item.write(new File("text.txt"));
                 } else {
                     message += " - " + item.getName() + " (" + item.getSize() + ")" + item.getContentType() + "<br>";
                     //InputStream fileStream = item.getInputStream();
                     byte[] foto = item.get();
+
                     //int i = query.saveFoto(foto);
                     //message += "<br> --- " + i;
                     //todo upload file
