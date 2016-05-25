@@ -66,9 +66,9 @@
             factory.setRepository(repository);
 
             ServletFileUpload upload = new ServletFileUpload(factory);
-            //String path = servletContext.TEMPDIR;
-            //message += " <br> path : " + path + "<br>";
-            //factory.setRepository(new File("/upload"));
+            String path = servletContext.ORDERED_LIBS;
+            message += " <br> path : " + path + "<br>";
+            factory.setRepository(new File("/upload"));
 
             List<FileItem> items = upload.parseRequest(request);
             Iterator<FileItem> iter = items.iterator();
@@ -80,7 +80,7 @@
 
                     //item.write(new File("text.txt"));
                 } else {
-                    message += " - " + item.getName() + " (" + item.getSize() + ")" + item.toString() + "<br>";
+                    message += " - " + item.getName() + " (" + item.getString("StoreLocation") + ")" + item.toString() + "<br>";
 
                     Iterator itr = item.getHeaders().getHeaderNames();
                     while (itr.hasNext()){
