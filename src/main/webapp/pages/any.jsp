@@ -67,7 +67,7 @@
 
             ServletFileUpload upload = new ServletFileUpload(factory);
             String path = servletContext.ORDERED_LIBS;
-            path = factory.getRepository().getPath();
+            path = factory.getRepository().getName();
             message += " <br> path : " + path + "<br>";
             //factory.setRepository(new File("/upload"));
 
