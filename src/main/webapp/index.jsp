@@ -66,5 +66,6 @@
 </div>
 <hr class="footerLine">
 <hr class="footerLine" style="top:100%;">
+<img src="images/jbosscorp_logo.png">
 </body>
 </html>
