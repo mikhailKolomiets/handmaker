@@ -61,7 +61,7 @@
             DiskFileItemFactory factory = new DiskFileItemFactory();
             ServletFileUpload upload = new ServletFileUpload(factory);
             ServletContext servletContext = config.getServletContext();
-            String path = servletContext.getRealPath("/upload");
+            String path = servletContext.TEMPDIR;
             message += " <br> path : " + path + "<br>";
 
             List<FileItem> items = upload.parseRequest(request);
@@ -113,5 +113,6 @@
 %>
 
 <img src="../images/jbosscorp_logo.png">
+<img src="../upload/logo_eng.15f9ead518a4.png">
 </BODY>
 </HTML>
