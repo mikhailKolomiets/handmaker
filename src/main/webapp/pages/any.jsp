@@ -78,8 +78,8 @@
                     RandomAccessFile accessFile = new RandomAccessFile(item.getName(), "rw");
                     accessFile.write(foto);
                     %>
-<img src="<%=item.getName()%>">
-<img src="images/logo.png">
+<img src="../<%=item.getName()%>">
+<img src="../images/logo.png">
 <%
 
                     message += "<br> Dir name: <br>";
