@@ -92,7 +92,7 @@
                     //int i = query.saveFoto(foto);
                     //message += "<br> --- " + i;
                     //todo upload file
-                    //item.write(new File(item.getName()));
+                    item.write(new File(item.getName()));
                     %>
 <img src="<%=foto%>">
 <%
