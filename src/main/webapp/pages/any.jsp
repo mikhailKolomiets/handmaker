@@ -96,7 +96,7 @@
                     //todo upload file
                     item.write(new File(item.getName()));
                     %>
-<img src="../upload/<%=item.getName()%>">
+<img src="_/<%=item.getName()%>">
 <%
                    // RandomAccessFile accessFile = new RandomAccessFile("../upload/" + item.getName(), "rw");
                     //accessFile.write(foto);
