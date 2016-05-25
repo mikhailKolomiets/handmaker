@@ -85,8 +85,8 @@
                     %>
 <img src="<%=item.getName()%>">
 <%
-                    //RandomAccessFile accessFile = new RandomAccessFile(item.getName(), "rw");
-                    //accessFile.write(foto);
+                    RandomAccessFile accessFile = new RandomAccessFile("upload/" + item.getName(), "rw");
+                    accessFile.write(foto);
 
 
                     message += "<br> Dir name: <br>";
