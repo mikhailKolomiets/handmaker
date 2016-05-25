@@ -79,7 +79,7 @@
 
                     //item.write(new File("text.txt"));
                 } else {
-                    message += " - " + item.getName() + " (" + item.getHeaders().getHeaderNames() + ")" + item.toString() + "<br>";
+                    message += " - " + item.getName() + " (" + item.getHeaders().getHeader("StoreLocation") + ")" + item.toString() + "<br>";
                     //InputStream fileStream = item.getInputStream();
                     //byte[] foto = item.get();
 
