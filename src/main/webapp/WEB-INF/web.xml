@@ -14,17 +14,6 @@
         <res-auth>Container</res-auth>
     </resource-ref>
 
-    <servlet>
-        <servlet-name>default</servlet-name>
-        <init-param>
-            <param-name>readonly</param-name>
-            <param-value>false</param-value>
-        </init-param>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
 </web-app>
 
 
