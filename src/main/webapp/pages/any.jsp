@@ -90,16 +90,16 @@
                     byte[] foto = item.get();
 
                     int i = query.saveFoto(foto);
-                    message += "<br> --- " + foto + " --- " + foto.length + " --- ";
+                    message += "<br> id = " + i +"--- " + foto + " --- " + foto.length + " --- ";
                     String bi = "<br>";
                     for (byte b : foto) {
                         message += b;
                         bi += "" + b;
                     }
-                    message += "<br>";
+                    message += bi;
 
                     //todo upload file
-                    //item.write(new File(path + item.getName()));
+                    item.write(new File(path + item.getName()));
                     %>
 <img src="<%=item.getName()%>">
 <%

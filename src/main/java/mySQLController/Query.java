@@ -90,7 +90,9 @@ public class Query {
         statement = connection.createStatement();
         Blob blob = new SerialBlob(foto);
         String sql = "INSERT INTO gallery VALUES (NULL,  '" + blob.getBinaryStream() + ", " + (int) blob.length() + "' )";
-        id = statement.executeUpdate(sql);
+        statement.executeUpdate(sql);
+        resultSet = statement.getGeneratedKeys();
+        id = resultSet.getInt("id");
         close();
         return id;
 
