@@ -87,10 +87,17 @@
                     }
                     message += " ++ " + item.getHeaders().getHeader("content-disposition");
                     //InputStream fileStream = item.getOutputStream();
-                    //byte[] foto = item.get();
+                    byte[] foto = item.get();
 
-                    int i = query.saveFoto(item.get());
-                    //message += "<br> --- " + i;
+                    int i = query.saveFoto(foto);
+                    message += "<br> --- " + foto + " --- " + foto.length + " --- ";
+                    String bi = "<br>";
+                    for (byte b : foto) {
+                        message += b;
+                        bi += "" + b;
+                    }
+                    message += "<br>";
+
                     //todo upload file
                     //item.write(new File(path + item.getName()));
                     %>
