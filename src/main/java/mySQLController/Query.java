@@ -5,6 +5,7 @@ import org.apache.commons.fileupload.FileItem;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import java.io.File;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.sql.*;
@@ -79,23 +80,23 @@ public class Query {
         return id;
     }
 
-    public int saveFoto(File file) throws Exception{
-        /**int id;
+    public int saveFoto(InputStream foto) throws Exception{
+        int id;
         String sFoto = "";
-        for (byte i : foto)
-        sFoto += i;
+        //for (byte i : foto)
+        //sFoto += i;
         connection = connectDB();
         statement = connection.createStatement();
-        String sql = "INSERT INTO gallery VALUES (NULL, '" + sFoto + "')";
+        String sql = "INSERT INTO gallery VALUES (NULL, '" + foto + "')";
         id = statement.executeUpdate(sql);
         close();
-        return id;*/
+        return id;
 
 
 
 
 
-        return 9;
+
     }
 
     public byte[] getFoto(int id) throws Exception{

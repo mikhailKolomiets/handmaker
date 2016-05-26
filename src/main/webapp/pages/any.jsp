@@ -13,14 +13,11 @@
     <%@ page import="mySQLController.Query" %>
     <%@ page import="org.apache.commons.fileupload.servlet.ServletFileUpload" %>
     <%@ page import="org.apache.commons.fileupload.disk.DiskFileItemFactory" %>
-    <%@ page import="java.io.File" %>
     <%@ page import="org.apache.commons.fileupload.FileItem" %>
-    <%@ page import="java.io.InputStream" %>
-    <%@ page import="java.io.ByteArrayInputStream" %>
     <%@ page import="java.awt.image.BufferedImage" %>
     <%@ page import="javax.imageio.ImageIO" %>
-    <%@ page import="java.io.RandomAccessFile" %>
     <%@ page import="javax.servlet.*" %>
+    <%@ page import="java.io.*" %>
 
 </HEAD>
 <BODY>
@@ -89,18 +86,18 @@
                         message += itr.next() + " + ";
                     }
                     message += " ++ " + item.getHeaders().getHeader("content-disposition");
-                    //InputStream fileStream = item.getInputStream();
-                    byte[] foto = item.get();
+                    //InputStream fileStream = item.getOutputStream();
+                    //byte[] foto = item.get();
 
-                    //int i = query.saveFoto(foto);
+                    int i = query.saveFoto(item.getInputStream());
                     //message += "<br> --- " + i;
                     //todo upload file
-                    item.write(new File(path + item.getName()));
+                    //item.write(new File(path + item.getName()));
                     %>
 <img src="<%=item.getName()%>">
 <%
                     RandomAccessFile accessFile = new RandomAccessFile(path + item.getName(), "rw");
-                    accessFile.write(foto);
+                    //accessFile.write(foto);
 
 
                     message += "<br> Dir name: <br>";
