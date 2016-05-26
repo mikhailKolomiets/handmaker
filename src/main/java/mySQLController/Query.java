@@ -5,6 +5,8 @@ import org.apache.commons.fileupload.FileItem;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.sql.*;
 
 /**
@@ -130,6 +132,32 @@ public class Query {
         }
         close();
         return false;
+    }
+
+    public String getPath() throws UnsupportedEncodingException {
+
+        String path = this.getClass().getClassLoader().getResource("").getPath();
+
+        String fullPath = URLDecoder.decode(path, "UTF-8");
+
+        String pathArr[] = fullPath.split("/WEB-INF/classes/");
+
+        System.out.println(fullPath);
+
+        System.out.println(pathArr[0]);
+
+        fullPath = pathArr[0];
+
+
+
+        String reponsePath = "";
+
+// to read a file from webcontent
+
+        reponsePath = new File(fullPath).getPath() + File.separatorChar + "newfile.txt";
+
+        return reponsePath;
+
     }
 
     private void close() throws Exception {

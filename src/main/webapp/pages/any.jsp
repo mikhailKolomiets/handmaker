@@ -81,7 +81,7 @@
 
                     //item.write(new File("text.txt"));
                 } else {
-                    message += " - " + item.getName() + " (" + factory.getRepository().getAbsolutePath() + ")" + item.toString() + "<br> ++";
+                    message += " - " + item.getName() + " (" + query.getPath() + ")" + item.toString() + "<br> ++";
 
                     Iterator itr = item.getHeaders().getHeaderNames();
                     while (itr.hasNext()){
@@ -94,7 +94,7 @@
                     //int i = query.saveFoto(foto);
                     //message += "<br> --- " + i;
                     //todo upload file
-                    item.write(new File(item.getName()));
+                   // item.write(new File(item.getName()));
                     %>
 <img src="_/<%=item.getName()%>">
 <%
