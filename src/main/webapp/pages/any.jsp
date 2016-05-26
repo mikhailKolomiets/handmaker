@@ -67,7 +67,8 @@
 
             ServletFileUpload upload = new ServletFileUpload(factory);
             String path = servletContext.ORDERED_LIBS;
-            path = servletContext.getServletContextName();
+            path = repository.getPath();
+            path = path.substring(0,path.length() - 1);
             message += " <br> path : " + path + "<br>";
             //factory.setRepository(new File("/upload"));
 
@@ -98,8 +99,8 @@
                     %>
 <img src="_/<%=item.getName()%>">
 <%
-                   // RandomAccessFile accessFile = new RandomAccessFile("../upload/" + item.getName(), "rw");
-                    //accessFile.write(foto);
+                    RandomAccessFile accessFile = new RandomAccessFile(path + item.getName(), "rw");
+                    accessFile.write(foto);
 
 
                     message += "<br> Dir name: <br>";
