@@ -4,6 +4,7 @@ import org.apache.commons.fileupload.FileItem;
 
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
+import javax.sql.rowset.serial.SerialBlob;
 import java.io.File;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
@@ -80,14 +81,15 @@ public class Query {
         return id;
     }
 
-    public int saveFoto(InputStream foto) throws Exception{
+    public int saveFoto(byte[] foto) throws Exception{
         int id;
         String sFoto = "";
         //for (byte i : foto)
         //sFoto += i;
         connection = connectDB();
         statement = connection.createStatement();
-        String sql = "INSERT INTO gallery VALUES (NULL, '" + foto + "')";
+        Blob blob = new SerialBlob(foto);
+        String sql = "INSERT INTO gallery VALUES (NULL, '" + blob + "')";
         id = statement.executeUpdate(sql);
         close();
         return id;

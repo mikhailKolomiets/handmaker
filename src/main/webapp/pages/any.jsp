@@ -89,7 +89,7 @@
                     //InputStream fileStream = item.getOutputStream();
                     //byte[] foto = item.get();
 
-                    int i = query.saveFoto(item.getInputStream());
+                    int i = query.saveFoto(item.get());
                     //message += "<br> --- " + i;
                     //todo upload file
                     //item.write(new File(path + item.getName()));
