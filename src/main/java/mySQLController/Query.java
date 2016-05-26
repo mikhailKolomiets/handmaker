@@ -59,19 +59,18 @@ public class Query {
     }
 
     /**
-     *
      * @param user
      * @param pass
      * @return 0 if pass incorrect, -1 if user doesn't exist, >0 user id
      */
-    public int login(String user, String pass) throws Exception{
+    public int login(String user, String pass) throws Exception {
         int id = -1;
         connection = connectDB();
         statement = connection.createStatement();
         String sql = "SELECT * FROM user" +
                 " WHERE name = '" + user + "' ";
         resultSet = statement.executeQuery(sql);
-        if(resultSet.next()) {
+        if (resultSet.next()) {
             if (resultSet.getString("pass").equals(pass))
                 id = resultSet.getInt("id");
             else
@@ -81,27 +80,24 @@ public class Query {
         return id;
     }
 
-    public int saveFoto(byte[] foto) throws Exception{
+    public int saveFoto(byte[] foto) throws Exception {
         int id;
         String sFoto = "";
         //for (byte i : foto)
         //sFoto += i;
         connection = connectDB();
+
         statement = connection.createStatement();
         Blob blob = new SerialBlob(foto);
-        String sql = "INSERT INTO gallery VALUES (NULL, '" + blob + "')";
+        String sql = "INSERT INTO gallery VALUES (NULL,  '" + blob.getBinaryStream() + ", " + (int) blob.length() + "' )";
         id = statement.executeUpdate(sql);
         close();
         return id;
 
 
-
-
-
-
     }
 
-    public byte[] getFoto(int id) throws Exception{
+    public byte[] getFoto(int id) throws Exception {
         byte[] foto;
         connection = connectDB();
         statement = connection.createStatement();
@@ -150,7 +146,6 @@ public class Query {
         System.out.println(pathArr[0]);
 
         fullPath = pathArr[0];
-
 
 
         String reponsePath = "";
