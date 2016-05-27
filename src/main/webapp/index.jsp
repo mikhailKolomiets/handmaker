@@ -39,7 +39,7 @@
     <strong>Главная</strong></div>
 <div ng-hide="id != 'login'" ng-click="sitePart = 'enter'" class="textSite"
      style="position:absolute;left:39%;top:4%;width:9%;">
-    <strong>Вход</strong></div>
+    <strong>Вход{{id}}</strong></div>
 
 <div ng-hide="id = 'login'" ng-click="sitePart = 'userRoom'" class="textSite"
      style="position:absolute;left:39%;top:4%;width:9%;">
