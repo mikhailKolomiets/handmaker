@@ -17,9 +17,9 @@
 <body>
 <%
     //String id = "  user id = ";
-    int userId = 0;
+    String userId = "login";
     if (EnumFinder.find(session.getAttributeNames(), "idUser"))
-        userId = Integer.valueOf(session.getAttribute("idUser").toString());
+        userId = session.getAttribute("idUser").toString();
     //out.print(session.getId() + " " + id);
     String sitePart = "main";
 
@@ -27,7 +27,7 @@
         sitePart = "reg";
 
     if (EnumFinder.find(request.getParameterNames(), "login") || EnumFinder.find(request.getParameterNames(), "logpass"))
-        if (userId == 0)
+        if (userId.equals("login"))
             sitePart = "enter";
 %>
 <div ng-click="sitePart = 'language'" ng-init="sitePart = '<%=sitePart%>' id = '<%=userId%>>'" class="textSite"
@@ -37,11 +37,11 @@
     <strong>Контакты</strong></div>
 <div ng-click="sitePart = 'main'" class="textSite" style="position:absolute;left:29%;top:4%;width:9%;">
     <strong>Главная</strong></div>
-<div ng-hide="id > 0" ng-click="sitePart = 'enter'" class="textSite"
+<div ng-hide="id != 'login'" ng-click="sitePart = 'enter'" class="textSite"
      style="position:absolute;left:39%;top:4%;width:9%;">
     <strong>Вход</strong></div>
 
-<div ng-hide="id == 0" ng-click="sitePart = 'userRoom'" class="textSite"
+<div ng-hide="id = 'login'" ng-click="sitePart = 'userRoom'" class="textSite"
      style="position:absolute;left:39%;top:4%;width:9%;">
     <strong>Личный кабинет</strong></div>
 
