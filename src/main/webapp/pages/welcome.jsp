@@ -37,18 +37,21 @@
                 "  Пароль: <input type=\"password\" size=\"8\" name=\"logpass\" required=\"\"><br>\n" +
                 "  <input type=\"submit\" value=\"Войти\">\n" +
                 "</form>");
-    } else {
+    } else {//todo workroom
         //out.print(session.getAttribute("idUser"));
-        %><a href="/index.jsp">Вход в личный кабинет</a> <%//todo design
+        %><p> личный кабинет</p>
+<form action="index.jsp" method="post">
+    <input type="text" hidden="" value="exit" name="exit">
+    <input type="submit" value="Выйти"></form>
+<>
+
+
+
+
+<%//todo design
     }
 %>
 
-<form method="POST" enctype="multipart/form-data" action="pages/any.jsp">
-File to upload: <input type="file" name="upfile"><br/>
-Notes about the file: <input type="text" name="note"><br/>
-<br/>
-<input type="submit" value="Press"> to upload the file!
-</form>
 
 </body>
 </html>

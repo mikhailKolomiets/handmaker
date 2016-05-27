@@ -19,7 +19,7 @@
     //String id = "  user id = ";
     String userId = "login";
     if (EnumFinder.find(session.getAttributeNames(), "idUser"))
-        userId = session.getAttribute("idUser").toString();
+        userId = Integer.valueOf(session.getAttribute("idUser").toString()) > 0 ? "ok" : "login";
     //out.print(session.getId() + " " + id);
     String sitePart = "main";
 
