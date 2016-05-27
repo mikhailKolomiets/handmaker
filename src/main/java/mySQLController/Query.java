@@ -83,13 +83,26 @@ public class Query {
     public int saveFoto(byte[] foto) throws Exception {
         int id;
         String sFoto = "";
-        //for (byte i : foto)
-        //sFoto += i;
+        char buff = 0;
+        for (id = 0; id < foto.length; id++){
+            if(id%2 == 0){
+                buff = (char)(foto[id]>>8);
+            }
+            else {
+                buff += foto[id];
+                sFoto += buff;
+            }
+            if (id == foto.length - 1)
+                sFoto += buff;
+        }
+
         connection = connectDB();
 
+
         statement = connection.createStatement();
-        Blob blob = new SerialBlob(foto);
-        String sql = "INSERT INTO gallery VALUES (NULL,  '" + blob.getBinaryStream() + ", " + (int) blob.length() + "' )";
+        //Blob blob = new SerialBlob(foto);
+        String sql = "INSERT INTO gallery VALUES (NULL,  '" +  sFoto + "' )";
+
         statement.executeUpdate(sql);
         resultSet = statement.getGeneratedKeys();
         id = resultSet.getInt("id");
@@ -126,6 +139,7 @@ public class Query {
             sql = "INSERT INTO user VALUES (NULL ,'" + resultSet.getString("name") + "' ,'" + resultSet.getString("pass") + "' ,'" +
                     resultSet.getString("email") + "', '" + resultSet.getString("town") + "')";
             statement.executeUpdate(sql);
+            statement.setFetchDirection(1);
             sql = "DELETE FROM registration " + "WHERE id = " + id;
             statement.executeUpdate(sql);
             close();
