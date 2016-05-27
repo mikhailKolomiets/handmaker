@@ -66,6 +66,6 @@
 </div>
 <hr class="footerLine">
 <hr class="footerLine" style="top:100%;">
-<img src="images/jbosscorp_logo.png">
+<img src="http://cdn1.savepice.ru/uploads/2016/5/27/2343655f7c74027fdfe891006f359741-full.png">
 </body>
 </html>
