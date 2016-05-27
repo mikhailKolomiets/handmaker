@@ -37,10 +37,11 @@
     <strong>Контакты</strong></div>
 <div ng-click="sitePart = 'main'" class="textSite" style="position:absolute;left:29%;top:4%;width:9%;">
     <strong>Главная</strong></div>
-<div ng-hide="<%=userId > 0%>" ng-click="sitePart = 'enter'" class="textSite"
+<div ng-hide="<%=userId%> > 0" ng-click="sitePart = 'enter'" class="textSite"
      style="position:absolute;left:39%;top:4%;width:9%;">
     <strong>Вход</strong></div>
-<div ng-hide="<%=userId == 0%>" ng-click="sitePart = 'userRoom'" class="textSite"
+
+<div ng-hide="<%=userId%> == 0" ng-click="sitePart = 'userRoom'" class="textSite"
      style="position:absolute;left:39%;top:4%;width:9%;">
     <strong>Личный кабинет</strong></div>
 
