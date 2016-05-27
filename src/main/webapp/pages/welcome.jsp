@@ -20,7 +20,7 @@
         try {
             int logInt = query.login(request.getParameter("login"), request.getParameter("logpass"));
             if (logInt > 0) {
-                message = "Вход выполнен";
+                //message = "Вход выполнен";
                 session.setAttribute("idUser", logInt);
             } else if (logInt < 0)
                 message = "Пользователя " + request.getParameter("login") + " нет в базе. Проверьте свой еmail.";
@@ -43,7 +43,7 @@
 <form action="index.jsp" method="post">
     <input type="text" hidden="" value="exit" name="exit">
     <input type="submit" value="Выйти"></form>
-<>
+
 
 
 

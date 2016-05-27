@@ -19,7 +19,7 @@
     //String id = "  user id = ";
     String userId = "login";
     if (EnumFinder.find(session.getAttributeNames(), "idUser"))
-        userId = Integer.valueOf(session.getAttribute("idUser").toString()) > 0 ? "ok" : "login";
+        userId = session.getAttribute("idUser").toString();
     //out.print(session.getId() + " " + id);
     String sitePart = "main";
 
@@ -63,7 +63,7 @@
 </div>
 
 <div class="textSite" style="position:absolute;left:3%;top: 98%;width:94%;font-size: 11px; padding:0;">
-    Все права защищены. Рукодел 2016.
+    Все права защищены. Рукодел 2016.{{id}}
 </div>
 <hr class="footerLine">
 <hr class="footerLine" style="top:100%;">
