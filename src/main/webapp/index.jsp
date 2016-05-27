@@ -30,7 +30,7 @@
         if (userId.equals("login"))
             sitePart = "enter";
 %>
-<div ng-click="sitePart = 'language'" ng-init="sitePart = '<%=sitePart%>' id = '<%=userId%>>'" class="textSite"
+<div ng-click="sitePart = 'language'" ng-init="sitePart = '<%=sitePart%>'; id = '<%=userId%>>'" class="textSite"
      style="position:absolute;left:9%;top:4%;width:9%;">
     <strong>Язык</strong></div>
 <div ng-click="sitePart = 'contacts'" class="textSite" style="position:absolute;left:19%;top:4%;width:9%;">
