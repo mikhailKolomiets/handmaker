@@ -30,18 +30,18 @@
         if (userId == 0)
             sitePart = "enter";
 %>
-<div ng-click="sitePart = 'language'" ng-init="sitePart = '<%=sitePart%>'" class="textSite"
+<div ng-click="sitePart = 'language'" ng-init="sitePart = '<%=sitePart%>' id = '<%=userId%>>'" class="textSite"
      style="position:absolute;left:9%;top:4%;width:9%;">
     <strong>Язык</strong></div>
 <div ng-click="sitePart = 'contacts'" class="textSite" style="position:absolute;left:19%;top:4%;width:9%;">
     <strong>Контакты</strong></div>
 <div ng-click="sitePart = 'main'" class="textSite" style="position:absolute;left:29%;top:4%;width:9%;">
     <strong>Главная</strong></div>
-<div ng-hide="<%=userId%> > 0" ng-click="sitePart = 'enter'" class="textSite"
+<div ng-hide="id > 0" ng-click="sitePart = 'enter'" class="textSite"
      style="position:absolute;left:39%;top:4%;width:9%;">
     <strong>Вход</strong></div>
 
-<div ng-hide="<%=userId%> == 0" ng-click="sitePart = 'userRoom'" class="textSite"
+<div ng-hide="id == 0" ng-click="sitePart = 'userRoom'" class="textSite"
      style="position:absolute;left:39%;top:4%;width:9%;">
     <strong>Личный кабинет</strong></div>
 
