@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <%@ page import="java.util.Enumeration" %>
 <%@ page import="resources.EnumFinder" %>
 <%--
@@ -16,13 +17,14 @@
 </head>
 <body>
 <%
+    request.setCharacterEncoding("utf-8");
     //String id = "  user id = ";
     String userId = "login";
     if (EnumFinder.find(session.getAttributeNames(), "idUser"))
         userId = session.getAttribute("idUser").toString();
     //out.print(session.getId() + " " + id);
     String sitePart = "main";
-
+//<img src="http://cdn1.savepice.ru/uploads/2016/5/27/2343655f7c74027fdfe891006f359741-full.png">
     if (EnumFinder.find(request.getParameterNames(), "codeAuth") || EnumFinder.find(request.getParameterNames(), "confPass"))
         sitePart = "reg";
 
@@ -39,9 +41,9 @@
     <strong>Главная</strong></div>
 <div ng-hide="id != 'login'" ng-click="sitePart = 'enter'" class="textSite"
      style="position:absolute;left:39%;top:4%;width:9%;">
-    <strong>Вход{{id}}</strong></div>
+    <strong>Вход</strong></div>
 
-<div ng-hide="id = 'login'" ng-click="sitePart = 'userRoom'" class="textSite"
+<div ng-hide="id == 'login'" ng-click="sitePart = 'userRoom'" class="textSite"
      style="position:absolute;left:39%;top:4%;width:9%;">
     <strong>Личный кабинет</strong></div>
 
@@ -62,11 +64,15 @@
     <jsp:include page="pages/mainRegistration.jsp"></jsp:include>
 </div>
 
+<div ng-show="sitePart == 'userRoom'" class="contentPage">
+    <jsp:include page="pages/workroom.jsp"></jsp:include>
+</div>
+
 <div class="textSite" style="position:absolute;left:3%;top: 98%;width:94%;font-size: 11px; padding:0;">
     Все права защищены. Рукодел 2016.{{id}}
 </div>
 <hr class="footerLine">
 <hr class="footerLine" style="top:100%;">
-<img src="http://cdn1.savepice.ru/uploads/2016/5/27/2343655f7c74027fdfe891006f359741-full.png">
+
 </body>
 </html>

@@ -1,12 +1,8 @@
 package mySQLController;
 
-import org.apache.commons.fileupload.FileItem;
-
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
-import javax.sql.rowset.serial.SerialBlob;
 import java.io.File;
-import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.sql.*;
@@ -67,8 +63,10 @@ public class Query {
         int id = -1;
         connection = connectDB();
         statement = connection.createStatement();
+        System.out.println(user);
         String sql = "SELECT * FROM user" +
                 " WHERE name = '" + user + "' ";
+
         resultSet = statement.executeQuery(sql);
         if (resultSet.next()) {
             if (resultSet.getString("pass").equals(pass))
@@ -122,7 +120,6 @@ public class Query {
             sql = "INSERT INTO user VALUES (NULL ,'" + resultSet.getString("name") + "' ,'" + resultSet.getString("pass") + "' ,'" +
                     resultSet.getString("email") + "', '" + resultSet.getString("town") + "')";
             statement.executeUpdate(sql);
-            statement.setFetchDirection(1);
             sql = "DELETE FROM registration " + "WHERE id = " + id;
             statement.executeUpdate(sql);
             close();
@@ -130,6 +127,15 @@ public class Query {
         }
         close();
         return false;
+    }
+
+    public boolean deleteUser(int id) throws Exception{
+        connection = connectDB();
+        statement = connection.createStatement();
+        String sql = "DELETE FROM user WHERE id = " + id;
+        statement.executeUpdate(sql);
+        close();
+        return true;
     }
 
     public String getPath() throws UnsupportedEncodingException {
@@ -166,7 +172,7 @@ public class Query {
 
     private Connection connectDB() throws Exception {
         InitialContext initialContext = new InitialContext();
-        DataSource dataSource = (DataSource) initialContext.lookup("java:comp/env/jdbc/MySQLDS");
+        DataSource dataSource = (DataSource) initialContext.lookup("java:comp/env/jdbc/handmaker");
         return dataSource.getConnection();
     }
 }

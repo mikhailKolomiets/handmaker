@@ -47,7 +47,9 @@
      out.print("Sorry d't connect: " + e.toString());
      }
      */
-    //String name = request.getParameter("name");//TODO make кирилица
+request.setCharacterEncoding("utf-8");
+response.setCharacterEncoding("utf-8");
+    final String photoPath = "/home/mihail/IdeaProjects/Handmaker2/src/main/webapp/images";//TODO make кирилица
     Query query = new Query();
     String message = "";
     String imgSrc = "";
@@ -59,12 +61,12 @@
             DiskFileItemFactory factory = new DiskFileItemFactory();
 
             ServletContext servletContext = config.getServletContext();
-            File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
-            factory.setRepository(repository);
+            factory.setRepository(new File("/home/mihail/IdeaProjects/Handmaker2/src/main/webapp/images"));
 
             ServletFileUpload upload = new ServletFileUpload(factory);
             String path = servletContext.ORDERED_LIBS;
-            path = repository.getPath();
+
+            path = factory.getRepository().getPath();
             path = path.substring(0,path.length() - 1);
             message += " <br> path : " + path + "<br>";
             //factory.setRepository(new File("/upload"));
@@ -79,40 +81,27 @@
 
                     //item.write(new File("text.txt"));
                 } else {
-                    message += " - " + item.getName() + " (" + query.getPath() + ")" + item.toString() + "<br> ++";
-
-                    Iterator itr = item.getHeaders().getHeaderNames();
-                    while (itr.hasNext()){
-                        message += itr.next() + " + ";
-                    }
-                    message += " ++ " + item.getHeaders().getHeader("content-disposition");
+                    //message += " - " + item.getName() + " (" + query.getPath() + ")" + item.toString() + "<br> ++";
+                    //message += " ++ " + item.getHeaders().getHeader("content-disposition");
                     //InputStream fileStream = item.getOutputStream();
-                    byte[] foto = item.get();
+                    //byte[] foto = item.get();
 
-                    int i = query.saveFoto(foto);
-                    message += "<br> id = " + i +"--- " + foto + " --- " + foto.length + " --- ";
-                    String bi = "<br>";
-                    for (byte b : foto) {
-                        message += b;
-                        bi += "" + b;
-                    }
-                    message += bi;
+                    //int i = query.saveFoto(foto);
+                    //message += "<br> id = --- " + foto + " --- " + foto.length + " --- ";
+
 
                     //todo upload file
-                    item.write(new File(path + item.getName()));
+
+                    item.write(new File(factory.getRepository() + "/" + item.getName()));
                     %>
-<img src="<%=item.getName()%>">
+<img src="../images/<%=item.getName()%>">
 <%
-                    RandomAccessFile accessFile = new RandomAccessFile(path + item.getName(), "rw");
+                    //RandomAccessFile accessFile = new RandomAccessFile(path + item.getName(), "rw");
                     //accessFile.write(foto);
 
 
                     message += "<br> Dir name: <br>";
-                    Enumeration enumeration = config.getInitParameterNames();
-                    while (enumeration.hasMoreElements()){
-                        message += enumeration.nextElement() +": ";
-                        message += config.getInitParameter(enumeration.nextElement().toString()) + "<br>";
-                    }
+
                 }
 
 
@@ -130,7 +119,6 @@
 
 %>
 
-<img src="../images/jbosscorp_logo.png">
-<img src="../upload/logo_eng.15f9ead518a4.png">
+
 </BODY>
 </HTML>

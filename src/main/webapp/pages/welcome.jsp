@@ -1,3 +1,4 @@
+
 <%@ page import="resources.EnumFinder" %>
 <%@ page import="mySQLController.Query" %>
 <%--
@@ -15,9 +16,14 @@
 <body>
 <%
     String message = "";
+    int oiuy = 0;
     if (EnumFinder.find(request.getParameterNames(), "login")) {
         Query query = new Query();
         try {
+            //int oiuy = 0;
+            oiuy = query.select("first", "prik");
+            message += oiuy + "";
+
             int logInt = query.login(request.getParameter("login"), request.getParameter("logpass"));
             if (logInt > 0) {
                 //message = "Вход выполнен";
@@ -28,18 +34,23 @@
                 message = "Неправильный пароль для пользователя " + request.getParameter("login") + ".";
             }//todo send pass to email
         } catch (Exception bde) {
-            message = bde.toString();
+            message = oiuy + bde.toString();
         }
     }
     if (!EnumFinder.find(session.getAttributeNames(), "idUser")) {
         out.print(message + "<form action=\"index.jsp\" method=\"post\">\n" +
-                "  Логин: <input type=\"text\" size=\"8\" name=\"login\" required=\"\"><br>\n" +
+                "  Логи: <input type=\"text\" size=\"8\" name=\"login\" required=\"\"><br>\n" +
                 "  Пароль: <input type=\"password\" size=\"8\" name=\"logpass\" required=\"\"><br>\n" +
                 "  <input type=\"submit\" value=\"Войти\">\n" +
-                "</form>");
+                "</form>" );
+
+
+
     } else {//todo workroom
         //out.print(session.getAttribute("idUser"));
         %><p> личный кабинет</p>
+<div ng-init = "id = 'lif'; sitePart = 'userRoom'">
+</div>
 <form action="index.jsp" method="post">
     <input type="text" hidden="" value="exit" name="exit">
     <input type="submit" value="Выйти"></form>

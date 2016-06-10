@@ -29,11 +29,6 @@
                     request.getParameter("confPass"), request.getParameter("town"), request.getParameter("email"))) {
 
                 code = UUID.randomUUID().toString();
-                mailSender.sendTo(request.getParameter("email"), "Регистрационный код РУКОДЕЛА",
-                        "Ваш код для завершения регистрации: " + code + " " +
-                                "Данные для входа на сайт: " +
-                                "Логин: " + request.getParameter("name") +
-                                "Пароль: " + request.getParameter("pass") + ".");
 
                 if (mailSender.messageOb.equals("")) {
                     query.createRegistration(request.getParameter("name"), request.getParameter("pass"), request.getParameter("email"),
@@ -42,6 +37,12 @@
                 } else {
                     message = mailSender.messageOb;
                 }
+
+                mailSender.sendTo(request.getParameter("email"), "Регистрационный код РУКОДЕЛА",
+                        "Ваш код для завершения регистрации:  " + code + " " +
+                                "\nДанные для входа на сайт: " +
+                                "\nЛогин: " + request.getParameter("name") +
+                                " Пароль: " + request.getParameter("pass") + ".");
             } else {
                 //mailSender.sendTo("mihail.kolomiets@gmail.com", "44", "dsa");
                 message = registrationValidate.message;
