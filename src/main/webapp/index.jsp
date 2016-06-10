@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <%@ page import="java.util.Enumeration" %>
 <%@ page import="resources.EnumFinder" %>
+<%@ page import="org.apache.commons.fileupload.servlet.ServletFileUpload" %>
 <%--
   Created by IntelliJ IDEA.
   User: Компик
@@ -31,6 +32,8 @@
     if (EnumFinder.find(request.getParameterNames(), "login") || EnumFinder.find(request.getParameterNames(), "logpass"))
         if (userId.equals("login"))
             sitePart = "enter";
+
+
 %>
 <div ng-click="sitePart = 'language'" ng-init="sitePart = '<%=sitePart%>'; id = '<%=userId%>'" class="textSite"
      style="position:absolute;left:9%;top:4%;width:9%;">
@@ -64,7 +67,7 @@
     <jsp:include page="pages/mainRegistration.jsp"></jsp:include>
 </div>
 
-<div ng-show="sitePart == 'userRoom'" class="contentPage">
+<div ng-show="sitePart == 'userRoom'">
     <jsp:include page="pages/workroom.jsp"></jsp:include>
 </div>
 

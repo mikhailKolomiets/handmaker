@@ -65,3 +65,28 @@ a:hover {
     padding:0;
     border-width: 0px;
 }
+.vr{
+    color: #3CB371;
+    background-color: #3CB371;
+    position: absolute;
+    left: 77%;
+    top:25%;
+    height:50%;
+    width: 1px;
+    border:none;
+    margin:0;
+    padding:0;
+}
+
+.workroomPage{
+    background-color: transparent;
+    padding: 0;
+    text-align: center;
+    color: #3CB371;
+    font-family: 'Century Gothic';
+    font-size: 14px;
+    position:absolute;
+    left:3%;
+    top:14%;
+    width:72%;
+}

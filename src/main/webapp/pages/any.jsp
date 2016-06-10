@@ -49,7 +49,7 @@
      */
 request.setCharacterEncoding("utf-8");
 response.setCharacterEncoding("utf-8");
-    final String photoPath = "/home/mihail/IdeaProjects/Handmaker2/src/main/webapp/images";//TODO make кирилица
+    final String photoPathBase = "/home/mihail/IdeaProjects/Handmaker2/src/main/webapp/images";
     Query query = new Query();
     String message = "";
     String imgSrc = "";
@@ -60,15 +60,13 @@ response.setCharacterEncoding("utf-8");
         if (isMulti) {
             DiskFileItemFactory factory = new DiskFileItemFactory();
 
-            ServletContext servletContext = config.getServletContext();
+            //ServletContext servletContext = config.getServletContext();
             factory.setRepository(new File("/home/mihail/IdeaProjects/Handmaker2/src/main/webapp/images"));
 
             ServletFileUpload upload = new ServletFileUpload(factory);
-            String path = servletContext.ORDERED_LIBS;
 
-            path = factory.getRepository().getPath();
-            path = path.substring(0,path.length() - 1);
-            message += " <br> path : " + path + "<br>";
+
+
             //factory.setRepository(new File("/upload"));
 
             List<FileItem> items = upload.parseRequest(request);

@@ -28,6 +28,8 @@
             if (logInt > 0) {
                 //message = "Вход выполнен";
                 session.setAttribute("idUser", logInt);
+                session.setAttribute("userName", request.getParameter("login"));
+
             } else if (logInt < 0)
                 message = "Пользователя " + request.getParameter("login") + " нет в базе. Проверьте свой еmail.";
             else {
@@ -49,7 +51,7 @@
     } else {//todo workroom
         //out.print(session.getAttribute("idUser"));
         %><p> личный кабинет</p>
-<div ng-init = "id = 'lif'; sitePart = 'userRoom'">
+<div ng-init = " sitePart = 'userRoom'">
 </div>
 <form action="index.jsp" method="post">
     <input type="text" hidden="" value="exit" name="exit">
