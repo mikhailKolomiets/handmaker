@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../styles/main.css" type="text/css">
 
 </head>
-<%String userName = "Гость";
+<%String userName = "Гость", result ="";
   if(EnumFinder.find(session.getAttributeNames(), "userName"))
       userName = session.getAttribute("userName").toString();
 %>
@@ -42,19 +42,20 @@
   <%if(ServletFileUpload.isMultipartContent(request)) {
     try {
       GaleryController gk = new GaleryController();
-      gk.savePhoto(request);
+      result = gk.savePhoto(request);
     } catch (Exception e) {
-      out.print(e.toString());
+      out.print(e.toString());}
       %>
-  <div ng-init="roomPart = 'add'"></div>
+  <div ng-init="roomPart = 'add'">
+    <p><%=result%></p>
+  </div>
   <%
-    }
   }
   %>
   <form action = "index.jsp" method="post" enctype="multipart/form-data">
     Имя изделия:<input type="text" maxlength="50" name="itemName" required=""><br>
     Категория: <input type="text" maxlength="50" name="itemCategory"><br>
-    Основное фото(не более 300Mb): <input type="file" name="upfile"><br>
+    Основное фото(не более 500Mb): <input type="file" name="upfile"><br>
     Описание: <textarea rows="10" cols="35" name="itemDescription" maxlength="21000"></textarea><br>
     <input type="submit" value="Добавить изделие">
   </form>
