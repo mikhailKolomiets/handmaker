@@ -47,7 +47,7 @@
     <strong>Вход</strong></div>
 
 <div ng-hide="id == 'login'" ng-click="sitePart = 'userRoom'" class="textSite"
-     style="position:absolute;left:39%;top:4%;width:9%;">
+     style="position:absolute;left:39%;top:4%;width:15%;">
     <strong>Личный кабинет</strong></div>
 
 <div ng-show="sitePart == 'contacts'" class="contentPage">

@@ -17,11 +17,9 @@ import javax.mail.internet.MimeMessage;
 
 public class MailSender {
 
-    //Now this is Virtecole support email from gmail and password it.
-    final private String senderAddres = "virtecole.team@gmail.com";//TODO server email!!!
-    final private String passwordSA = "nlk15Fj3WS";
+    final private String senderAddres = "handmaker.team@gmail.com";
+    final private String passwordSA = "asd8314bj";
     public String messageOb = "";
-
 
     public void sendTo(String userEmail, String theme, String body) {
         Properties deliveryPropopties = new Properties();
@@ -48,11 +46,9 @@ public class MailSender {
             Transport.send(msg);
         } catch (MessagingException mex) {
             mex.printStackTrace();
-            //messageOb = mex.toString();
             messageOb = "Временный сбой отправки кода! Свяжитесь пожалуйста с Михаилом.";
         }
     }
-
 
 }
 

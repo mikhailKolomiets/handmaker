@@ -78,17 +78,21 @@ public class Query {
         return id;
     }
 
-    public int saveFoto(byte[] foto) throws Exception {
-        int id;
+    public String createGaleryItem(int userId, String path, String descriptiion, String cathegoty, String name) throws Exception {
+        String result;
         connection = connectDB();
         statement = connection.createStatement();
 
-        String sql = "INSERT INTO gallery VALUES (NULL,  '0' )";
-
-        id = statement.executeUpdate(sql);
-
+        String sql = "INSERT INTO galery (userId,path,description,category,name) VALUES ('" +
+                userId + "','" + path + "','" + descriptiion + "','" + cathegoty + "','" + name + "')";
+        try {
+            statement.executeUpdate(sql);
+            result = "Изделие добавлено!";
+        } catch (Exception e) {
+            result = e.toString();
+        }
         close();
-        return id;
+        return result;
 
 
     }
@@ -129,7 +133,7 @@ public class Query {
         return false;
     }
 
-    public boolean deleteUser(int id) throws Exception{
+    public boolean deleteUser(int id) throws Exception {
         connection = connectDB();
         statement = connection.createStatement();
         String sql = "DELETE FROM user WHERE id = " + id;

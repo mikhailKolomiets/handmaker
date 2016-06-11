@@ -1,4 +1,3 @@
-
 <%@ page import="resources.EnumFinder" %>
 <%@ page import="mySQLController.Query" %>
 <%--
@@ -16,27 +15,23 @@
 <body>
 <%
     String message = "";
-    int oiuy = 0;
+    int logint = 0;
     if (EnumFinder.find(request.getParameterNames(), "login")) {
         Query query = new Query();
         try {
-            //int oiuy = 0;
-            oiuy = query.select("first", "prik");
-            message += oiuy + "";
-
-            int logInt = query.login(request.getParameter("login"), request.getParameter("logpass"));
-            if (logInt > 0) {
+            logint = query.login(request.getParameter("login"), request.getParameter("logpass"));
+            if (logint > 0) {
                 //message = "Вход выполнен";
-                session.setAttribute("idUser", logInt);
+                session.setAttribute("idUser", logint);
                 session.setAttribute("userName", request.getParameter("login"));
 
-            } else if (logInt < 0)
+            } else if (logint < 0)
                 message = "Пользователя " + request.getParameter("login") + " нет в базе. Проверьте свой еmail.";
             else {
                 message = "Неправильный пароль для пользователя " + request.getParameter("login") + ".";
             }//todo send pass to email
         } catch (Exception bde) {
-            message = oiuy + bde.toString();
+            message = bde.toString();
         }
     }
     if (!EnumFinder.find(session.getAttributeNames(), "idUser")) {
@@ -44,24 +39,13 @@
                 "  Логи: <input type=\"text\" size=\"8\" name=\"login\" required=\"\"><br>\n" +
                 "  Пароль: <input type=\"password\" size=\"8\" name=\"logpass\" required=\"\"><br>\n" +
                 "  <input type=\"submit\" value=\"Войти\">\n" +
-                "</form>" );
-
-
-
-    } else {//todo workroom
-        //out.print(session.getAttribute("idUser"));
-        %><p> личный кабинет</p>
-<div ng-init = " sitePart = 'userRoom'">
+                "</form>");
+    } else {
+%>
+<div ng-init=" sitePart = 'userRoom'; id = '<%=logint%>'">
 </div>
-<form action="index.jsp" method="post">
-    <input type="text" hidden="" value="exit" name="exit">
-    <input type="submit" value="Выйти"></form>
 
-
-
-
-
-<%//todo design
+<%
     }
 %>
 
