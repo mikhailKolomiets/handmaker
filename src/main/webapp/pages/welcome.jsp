@@ -36,7 +36,7 @@
     }
     if (!EnumFinder.find(session.getAttributeNames(), "idUser")) {
         out.print(message + "<form action=\"index.jsp\" method=\"post\">\n" +
-                "  Логи: <input type=\"text\" size=\"8\" name=\"login\" required=\"\"><br>\n" +
+                "  Логин: <input type=\"text\" size=\"8\" name=\"login\" required=\"\"><br>\n" +
                 "  Пароль: <input type=\"password\" size=\"8\" name=\"logpass\" required=\"\"><br>\n" +
                 "  <input type=\"submit\" value=\"Войти\">\n" +
                 "</form>");

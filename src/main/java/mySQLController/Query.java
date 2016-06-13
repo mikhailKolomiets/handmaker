@@ -1,11 +1,15 @@
 package mySQLController;
 
+import resources.GaleryItem;
+
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by mihail on 21.05.16.
@@ -93,8 +97,23 @@ public class Query {
         }
         close();
         return result;
+    }
 
+    public List<GaleryItem> getAllUserWork(int id) throws Exception {
+        List<GaleryItem> userItems = new ArrayList<GaleryItem>();
+        connection = connectDB();
+        statement = connection.createStatement();
 
+        String sql = "SELECT * FROM galery WHERE userId = " + id;
+        resultSet = statement.executeQuery(sql);
+
+        while (resultSet.next()) {
+            userItems.add(new GaleryItem(resultSet.getInt("id"), resultSet.getInt("userId"), resultSet.getString("path"),
+                    resultSet.getString("path2"), resultSet.getString("path3"), resultSet.getString("description"),
+                    resultSet.getString("category"), resultSet.getString("name")));
+        }
+
+        return userItems;
     }
 
     public byte[] getFoto(int id) throws Exception {

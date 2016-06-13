@@ -4,6 +4,7 @@ import mySQLController.Query;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import resources.GaleryItem;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -61,6 +62,11 @@ public class GaleryController {
            result = query.createGaleryItem(userId,photoInBase,description,cathegory,name);
         }
         return result;
+    }
+
+    public List<GaleryItem> getGalaryItem(int id) throws Exception{
+        Query query = new Query();
+        return query.getAllUserWork(id);
     }
 
 }
